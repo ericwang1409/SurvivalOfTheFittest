@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class RabbitMove : MonoBehaviour
 {
-    public float speed = 5;
-    public float directionChangeInterval = 1;
-    public float maxHeadingChange = 30;
+    private float speed = 1;
+    private float directionChangeInterval = 1;
+    private float maxHeadingChange = 90;
 
     CharacterController controller;
     float heading;
     Vector3 targetRotation;
+
+    private float radius = 35;
+
+    private Vector3 playerVelocity;
 
     // Start is called before the first frame update
     void Awake()
@@ -27,9 +31,32 @@ public class RabbitMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
+        
+        
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
         var forward = transform.TransformDirection(Vector3.forward);
-        controller.SimpleMove(forward * speed);
+        Vector3 up = transform.TransformDirection(Vector3.up);
+        
+        if (controller.isGrounded)
+        {
+            playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
+        }
+
+        playerVelocity.y += -9.81f * Time.deltaTime;
+        controller.Move((forward + playerVelocity) * speed * Time.deltaTime);
+        //Debug.Log("here1");
+
+
+        if (distance > radius)
+        {
+            Vector3 fromOriginToObject = transform.position - Vector3.zero;
+            fromOriginToObject *= radius / distance;
+
+            transform.position = Vector3.zero + fromOriginToObject;
+            
+        }
+
     }
 
     IEnumerator NewHeading()

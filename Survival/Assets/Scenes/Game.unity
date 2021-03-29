@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe43e9bd5ab54d418d1e335e14065e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rabbit: {fileID: 4164777357076073991, guid: c9d886e51054ce543bc0436462c0fc91, type: 3}
+  rabbit: {fileID: 5418388775379972807, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
 --- !u!1001 &1582519327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -538,6 +538,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eedd9b360e26b264fa8bcaccd9f30eb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: eedd9b360e26b264fa8bcaccd9f30eb3, type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eedd9b360e26b264fa8bcaccd9f30eb3, type: 3}
