@@ -16,7 +16,7 @@ public class AddAnimals : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B) && counter < 5)
+        if (Input.GetKeyDown(KeyCode.B) && counter < 20)
         {
             Vector3 position = Random.insideUnitSphere * 35;
             GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x, 0.2f, position.y), Quaternion.identity) as GameObject;

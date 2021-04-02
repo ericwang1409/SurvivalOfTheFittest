@@ -37,25 +37,25 @@ public class GenerateMap : MonoBehaviour
         for (int i = 0; i < 15; i++)
         {
             Vector3 position = Random.insideUnitSphere * 35;
-            Instantiate(rock, new Vector3(position.x, 0.199f, position.y), Quaternion.Euler(-90, 0, 0));
+            Instantiate(rock, new Vector3(position.x, .665f, position.y), Quaternion.Euler(-90, 0, 0));
         }
         //rock1
         for (int i = 0; i < 15; i++)
         {
             Vector3 position = Random.insideUnitSphere * 35;
-            Instantiate(rock1, new Vector3(position.x, 0.199f, position.y), Quaternion.Euler(-90, 0, 0));
+            Instantiate(rock1, new Vector3(position.x, .335f, position.y), Quaternion.Euler(-90, 0, 0));
         }
         //rock2
         for (int i = 0; i < 15; i++)
         {
             Vector3 position = Random.insideUnitSphere * 35;
-            Instantiate(rock2, new Vector3(position.x, 0.199f, position.y), Quaternion.Euler(-90, 0, 0));
+            Instantiate(rock2, new Vector3(position.x, .326f, position.y), Quaternion.Euler(-90, 0, 0));
         }
         //rock3
         for (int i = 0; i < 15; i++)
         {
             Vector3 position = Random.insideUnitSphere * 35;
-            Instantiate(rock3, new Vector3(position.x, 0.199f, position.y), Quaternion.Euler(-90, 0, 0));
+            Instantiate(rock3, new Vector3(position.x, .339f, position.y), Quaternion.Euler(-90, 0, 0));
         }
     }
 
