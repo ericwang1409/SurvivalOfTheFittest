@@ -16,8 +16,8 @@ public class AddAnimals : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //If pressing B and rabbit count < 5
-        if (Input.GetKeyDown(KeyCode.B) && counter < 5)
+        //If pressing B and rabbit count < 20
+        
         if (Input.GetKeyDown(KeyCode.B) && counter < 20)
         {
             //Random position in 35 unit sphere. Always spawns from middle

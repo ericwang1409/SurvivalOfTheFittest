@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThirdPersonController : MonoBehaviour
 {
     private CharacterController controller;
-    public Transform cam;
+    public Camera cam;
 
     private float speed = 3f;
 
@@ -28,11 +28,6 @@ public class ThirdPersonController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (controller.isGrounded)
-        {
-            Debug.Log("yes");
-        }
-
         if (controller.isGrounded && (horizontal != 0 || vertical != 0))
         {
             playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
@@ -44,7 +39,10 @@ public class ThirdPersonController : MonoBehaviour
         
         if (direction.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
+            
+            //Debug.Log(cam.eulerAngles);
+
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
