@@ -15,9 +15,10 @@ public class GenerateMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //instantiate watering hole
+        //instantiate watering hole. 4
         for (int i = 0; i < 4; i++)
         {
+            // Random position for water hole and create ibject
             Vector3 position = Random.insideUnitSphere * 35;
             Instantiate(waterHole, new Vector3(position.x, .24f, position.y), Quaternion.identity);
         }
@@ -25,6 +26,7 @@ public class GenerateMap : MonoBehaviour
         for (int i = 0; i < 50; i++)
         {
             Vector3 position = Random.insideUnitSphere * 35;
+            //Quanternion Eurler is to rate the object 
             Instantiate(tree, new Vector3(position.x, 0.199f, position.y), Quaternion.Euler(-90, 0, 0));
         }
         //instantiate grass
