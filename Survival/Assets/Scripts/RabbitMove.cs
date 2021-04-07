@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public static class GlobalVars{
+    public static int rabbitSpeed = 10;
+}
+
 public class RabbitMove : MonoBehaviour
 {
-    private float speed = 1;
+    //public static float rabbitSpeed = 1;
     //Changing direction
     private float directionChangeInterval = 1;
     //Angle change
@@ -55,7 +59,7 @@ public class RabbitMove : MonoBehaviour
         //Does not update very frame
         playerVelocity.y += -9.81f * Time.deltaTime;
         //moves in x and y direction
-        controller.Move((forward + playerVelocity) * speed * Time.deltaTime);
+        controller.Move((forward + playerVelocity) * GlobalVars.rabbitSpeed/10 * Time.deltaTime);
         //Debug.Log("here1");
 
         //If the rabbbit is farther than 35 from the cetner

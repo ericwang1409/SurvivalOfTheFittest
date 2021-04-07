@@ -5,6 +5,7 @@ using UnityEngine;
 public class AddAnimals : MonoBehaviour
 {
     public GameObject rabbit;
+    public GameObject hyena;
     private int counter = 0;
 
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class AddAnimals : MonoBehaviour
     {
         //If pressing B and rabbit count < 20
         
-        if (Input.GetKeyDown(KeyCode.B) && counter < 20)
+        if (Input.GetKeyDown(KeyCode.R) && counter < 20)
         {
             //Random position in 35 unit sphere. Always spawns from middle
             Vector3 position = Random.insideUnitSphere * 35;
