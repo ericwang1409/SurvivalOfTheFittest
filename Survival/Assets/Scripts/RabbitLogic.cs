@@ -48,7 +48,7 @@ public class RabbitLogic : MonoBehaviour
             //Debug.Log(hunger);
     
             if (objectC.gameObject.name == "grass(Clone)" && hunger <= 50){
-                transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
+                //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
                 //WaitForSeconds(1);
                 Destroy(objectC.gameObject);
                 hunger += 50;
