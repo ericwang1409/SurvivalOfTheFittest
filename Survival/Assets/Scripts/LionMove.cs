@@ -2,11 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GlobalVars{
-    public static int rabbitSpeed = 10;
-}
-
-public class RabbitMove : MonoBehaviour
+public class LionMove : MonoBehaviour
 {
     //public static float rabbitSpeed = 1;
     //Changing direction
@@ -24,6 +20,8 @@ public class RabbitMove : MonoBehaviour
     private Vector3 playerVelocity;
 
     private bool jumped;
+
+    public static int lionSpeed = 10;
 
     // Start is called before the first frame update. Each rabbit has the script so it runs for each one
     void Awake()
@@ -43,7 +41,7 @@ public class RabbitMove : MonoBehaviour
     {
         //Position from the center
         float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
-        
+
         //Eurlerangles is the angle. Make the movements gradual 
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
         //vecto forward value is 0, 0, 1
@@ -67,7 +65,7 @@ public class RabbitMove : MonoBehaviour
         //Does not update very frame
         playerVelocity.y += -9.81f * Time.deltaTime;
         //moves in x and y direction
-        controller.Move((forward + playerVelocity) * GlobalVars.rabbitSpeed/10 * Time.deltaTime);
+        controller.Move((forward + playerVelocity) * lionSpeed / 10 * Time.deltaTime);
         //Debug.Log("here1");
 
         //If the rabbbit is farther than 35 from the cetner
@@ -79,7 +77,7 @@ public class RabbitMove : MonoBehaviour
             fromOriginToObject *= radius / distance;
 
             transform.position = Vector3.zero + fromOriginToObject;
-            
+
         }
 
     }

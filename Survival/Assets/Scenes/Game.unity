@@ -315,7 +315,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232849038}
-  m_LocalRotation: {x: 0.07742484, y: 0.000000017095527, z: -0.0000000013276037, w: 0.9969982}
+  m_LocalRotation: {x: 0.07742484, y: -0.000000017154731, z: 0.0000000013322012, w: 0.9969982}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -793,7 +793,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319323937}
-  m_LocalRotation: {x: 0.0817767, y: 0.000000033391636, z: -0.0000000027398344, w: 0.9966507}
+  m_LocalRotation: {x: 0.0817767, y: -0.000000018718106, z: 0.0000000015358489, w: 0.9966507}
   m_LocalPosition: {x: -6.095805, y: 1.457753, z: -33.195656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1175,6 +1175,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rabbit: {fileID: 5418388775379972807, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
+  lion: {fileID: 8332846592400417885, guid: 1a346635342d40b41b428b46c58b9662, type: 3}
+  totalRabbit: 20
+  totalLion: 20
 --- !u!1001 &1582519327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1318,7 +1321,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604879347}
-  m_LocalRotation: {x: 0.095546916, y: 2.2978314e-15, z: -1.1878144e-16, w: 0.9954249}
+  m_LocalRotation: {x: 0.095546894, y: 0.000000030578985, z: -0.0000000029351555, w: 0.9954249}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1474,7 +1477,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868141183}
-  m_LocalRotation: {x: 0.05932509, y: 4.687747e-10, z: -2.7859078e-11, w: 0.99823874}
+  m_LocalRotation: {x: 0.0593251, y: 0.0000000021470095, z: -1.275963e-10, w: 0.99823874}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

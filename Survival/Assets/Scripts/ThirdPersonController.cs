@@ -32,16 +32,23 @@ public class ThirdPersonController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        
+
         //if the rabbit is on the ground and the player is pressing wasd, and the rabbit did not jump yet makes it jump
+
+        Debug.Log(controller.isGrounded);
+
         if (controller.isGrounded && (horizontal != 0 || vertical != 0) && !jumped)
         {
             playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
             StartCoroutine(DelayJump());
             jumped = true;
-           
         }
-        
+        else if (!controller.isGrounded && horizontal == 0 && vertical == 0)
+        {
+            //playerVelocity.y += -9.81f * Time.deltaTime;
+            controller.Move(Vector3.down * speed * Time.deltaTime);
+        }
+
         //if player velocity is greater than -1 makes it decrease by gravity; this is so that the y velocity of the rabbit doesn't go exponentially lower
         if (playerVelocity.y >= -1)
         {
