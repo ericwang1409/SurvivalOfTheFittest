@@ -51,6 +51,7 @@ public class RabbitLogic : MonoBehaviour
                 //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
                 //WaitForSeconds(1);
                 Destroy(objectC.gameObject);
+                GenerateMap.numGrass--;
                 hunger += 50;
             }
             

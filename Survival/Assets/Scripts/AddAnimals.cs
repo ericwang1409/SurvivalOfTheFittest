@@ -6,11 +6,14 @@ public class AddAnimals : MonoBehaviour
 {
     public GameObject rabbit;
     public GameObject lion;
+    public GameObject poacher;
     private int rabbitCounter = 0;
     private int lionCounter = 0;
+    private int poacherCounter = 0;
 
     public int totalRabbit;
     public int totalLion;
+    public int totalPoacher;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +47,18 @@ public class AddAnimals : MonoBehaviour
             GameObject newLion = Instantiate(lion, new Vector3(position.x, 0.674f, position.y), Quaternion.identity) as GameObject;
             //Scaling down the rabbit's size
             newLion.transform.localScale = new Vector3(19.14f, 19.14f, 19.14f);
+            lionCounter++;
+            Debug.Log(lionCounter);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y) && poacherCounter < totalPoacher)
+        {
+            //Random position in 35 unit sphere. Always spawns from middle
+            Vector3 position = Random.insideUnitSphere * 35;
+            //New rabbit object is instnatiated at that position
+            GameObject newPoacher = Instantiate(poacher, new Vector3(position.x, 0.432f, position.y), Quaternion.identity) as GameObject;
+            //Scaling down the rabbit's size
+            newPoacher.transform.localScale = new Vector3(0.1117118f, 0.1117118f, 0.1117118f);
             lionCounter++;
             Debug.Log(lionCounter);
         }

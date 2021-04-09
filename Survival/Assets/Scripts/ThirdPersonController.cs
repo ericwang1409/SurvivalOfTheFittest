@@ -35,8 +35,6 @@ public class ThirdPersonController : MonoBehaviour
 
         //if the rabbit is on the ground and the player is pressing wasd, and the rabbit did not jump yet makes it jump
 
-        Debug.Log(controller.isGrounded);
-
         if (controller.isGrounded && (horizontal != 0 || vertical != 0) && !jumped)
         {
             playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);

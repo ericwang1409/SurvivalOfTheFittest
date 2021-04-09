@@ -1176,8 +1176,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rabbit: {fileID: 5418388775379972807, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
   lion: {fileID: 8332846592400417885, guid: 1a346635342d40b41b428b46c58b9662, type: 3}
+  poacher: {fileID: 1443582099841763734, guid: 0f8b206a689164d48b9cea5f93d9e78e, type: 3}
   totalRabbit: 20
   totalLion: 20
+  totalPoacher: 5
 --- !u!1001 &1582519327
 PrefabInstance:
   m_ObjectHideFlags: 0
