@@ -15,10 +15,10 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.50980395, g: 0.69411767, b: 0.9686275, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.01
-  m_LinearFogStart: 1
+  m_FogColor: {r: 0.89019614, g: 0.8000001, b: 0.9568628, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.015
+  m_LinearFogStart: 15
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.7169812, g: 0.5198705, b: 0.4761837, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.649642, g: 0.46658763, b: 0.8161138, a: 1}
+  m_IndirectSpecularColor: {r: 0.5890731, g: 0.42306724, b: 0.73978096, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -315,7 +315,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232849038}
-  m_LocalRotation: {x: 0.07742484, y: -0.00000001715473, z: 0.0000000013322011, w: 0.9969982}
+  m_LocalRotation: {x: 0.07742484, y: 0.000000017154731, z: -0.0000000013322012, w: 0.9969982}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -889,7 +889,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319323937}
-  m_LocalRotation: {x: 0.0817767, y: -0.000000018718106, z: 0.0000000015358489, w: 0.9966507}
+  m_LocalRotation: {x: 0.0817767, y: 0.000000018718106, z: -0.0000000015358489, w: 0.9966507}
   m_LocalPosition: {x: -6.095805, y: 1.457753, z: -33.195656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1446,7 +1446,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604879347}
-  m_LocalRotation: {x: 0.095546916, y: 2.2978314e-15, z: -1.1878144e-16, w: 0.9954249}
+  m_LocalRotation: {x: 0.095546894, y: -0.000000030578985, z: 0.0000000029351555, w: 0.9954249}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Exposure: 1.15
+    - _Exposure: 1.1
     - _Rotation: 0
     m_Colors:
     - _Tint: {r: 0.9528302, g: 0.5094039, b: 0.46203277, a: 0.5}
