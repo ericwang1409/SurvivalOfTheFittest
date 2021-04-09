@@ -25,7 +25,7 @@ public class ThirdPersonController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //get inputs for rabbit control; horizontal is A and D and vertical is W and S, creates a Vector with those inputs
         float horizontal = Input.GetAxisRaw("Horizontal");
