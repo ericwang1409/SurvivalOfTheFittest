@@ -12,6 +12,8 @@ public class GenerateMap : MonoBehaviour
     public GameObject rock3;
     public GameObject grass;
 
+    public static int numGrass = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class GenerateMap : MonoBehaviour
         {
             Vector3 position = Random.insideUnitSphere * 35;
             Instantiate(grass, new Vector3(position.x, 0.199f, position.y), Quaternion.Euler(-90, 0, 0));
+            numGrass = 50;
         }
         //rock
         for (int i = 0; i < 15; i++)
@@ -59,11 +62,31 @@ public class GenerateMap : MonoBehaviour
             Vector3 position = Random.insideUnitSphere * 35;
             Instantiate(rock3, new Vector3(position.x, .339f, position.y), Quaternion.Euler(-90, 0, 0));
         }
+
+        StartCoroutine(AddGrass());
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
+    }
+
+    //keeps adding grass until a limit of 100
+    IEnumerator AddGrass()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2);
+            if (numGrass < 100)
+            {
+                Vector3 position = Random.insideUnitSphere * 35;
+                Instantiate(grass, new Vector3(position.x, 0.199f, position.y), Quaternion.Euler(-90, 0, 0));
+                numGrass++;
+                Debug.Log(numGrass);
+            }
+        }
         
     }
 }
