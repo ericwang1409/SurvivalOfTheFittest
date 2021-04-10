@@ -7,17 +7,22 @@ public class RabbitLogic : MonoBehaviour
     private int hunger = 100;
     private int thirst = 1000;
     private int sphereRadius = 3;
-    
+
+    Animator rabbitAnimate;
+
+    public bool dying = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        rabbitAnimate = gameObject.GetComponent<Animator>();
         InvokeRepeating("decreaseHunger", 1.0f, 1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(hunger);
         if(hunger < 40){
             GlobalVars.rabbitSpeed = 6;
         }
@@ -25,7 +30,13 @@ public class RabbitLogic : MonoBehaviour
             GlobalVars.rabbitSpeed = 10;
         }
         if(hunger <= 0){
-            Destroy(gameObject);
+            dying = true;
+            if (dying)
+            {
+                Debug.Log(dying);
+                StartCoroutine(dyingAnimation());
+            }
+            dying = false;
         }
         if(thirst < 400){
             GlobalVars.rabbitSpeed = 6;
@@ -72,5 +83,16 @@ public class RabbitLogic : MonoBehaviour
         if (thirst > 0){
             thirst -= 15;
         }
+    }
+
+    IEnumerator dyingAnimation()
+    {
+        Debug.Log("here");
+        rabbitAnimate.SetBool("died", true);
+        yield return new WaitForSeconds(0.5f);
+        
+        Destroy(gameObject);
+        Debug.Log("here2");
+
     }
 }
