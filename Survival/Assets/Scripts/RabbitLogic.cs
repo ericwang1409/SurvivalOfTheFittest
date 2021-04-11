@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class RabbitLogic : MonoBehaviour
 {
-    private int hunger = 100;
+    private int hunger = 3;
     private int thirst = 1000;
     private int sphereRadius = 3;
 
-    Animator rabbitAnimate;
+    public Animator rabbitAnimate;
 
     public bool dying = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        rabbitAnimate = gameObject.GetComponent<Animator>();
+        //rabbitAnimate = gameObject.GetComponent<Animator>();
         InvokeRepeating("decreaseHunger", 1.0f, 1.0f);
     }
 
@@ -89,7 +89,7 @@ public class RabbitLogic : MonoBehaviour
     {
         Debug.Log("here");
         rabbitAnimate.SetBool("died", true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.65f);
         
         Destroy(gameObject);
         Debug.Log("here2");
