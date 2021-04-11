@@ -41,9 +41,22 @@ public class RabbitMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IdleMotion();
+        
+    }
+
+    void EatGrass()
+    {
+
+
+        Vector3.MoveTowards(transform.position, )
+    }
+
+    void IdleMotion()
+    {
         //Position from the center
         float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
-        
+
         //Eurlerangles is the angle. Make the movements gradual 
         transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
         //vecto forward value is 0, 0, 1
@@ -67,7 +80,7 @@ public class RabbitMove : MonoBehaviour
         //Does not update very frame
         playerVelocity.y += -9.81f * Time.deltaTime;
         //moves in x and y direction
-        controller.Move(((forward * GlobalVars.rabbitSpeed/10) + playerVelocity) * Time.deltaTime);
+        controller.Move(((forward * GlobalVars.rabbitSpeed / 10) + playerVelocity) * Time.deltaTime);
         //Debug.Log("here1");
 
         //If the rabbbit is farther than 35 from the cetner
@@ -79,10 +92,10 @@ public class RabbitMove : MonoBehaviour
             fromOriginToObject *= radius / distance;
 
             transform.position = Vector3.zero + fromOriginToObject;
-            
-        }
 
+        }
     }
+
     //Wait one second and then runs new heading routine
     IEnumerator NewHeading()
     {

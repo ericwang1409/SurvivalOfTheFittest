@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1094044057171259919}
   m_Layer: 0
   m_Name: rabbitParent
-  m_TagString: Untagged
+  m_TagString: rabbit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

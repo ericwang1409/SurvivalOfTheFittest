@@ -34,7 +34,6 @@ public class RabbitLogic : MonoBehaviour
             dying = true;
             if (dying)
             {
-                Debug.Log(dying);
                 StartCoroutine(dyingAnimation());
             }
             dying = false;
@@ -50,19 +49,17 @@ public class RabbitLogic : MonoBehaviour
         if (thirst <= 0)
         {
             Destroy(gameObject);
+            AddAnimals.worldRabbit--;
         }
+        
+    }
 
+    public static void FindGrass(Transform transform, int sphereRadius, int hunger, int thirst)
+    {
         //if (Physics.CheckSphere(transform.position, sphereRadius))
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, sphereRadius);
         foreach (var objectC in objectsCollided)
         {
-            if (objectC.gameObject.name != "CharacterController" && objectC.gameObject.name != "ThirdPersonPlayer" && objectC.gameObject.name != "island_G4C")
-            {
-                //Debug.Log(objectC);
-                //Destroy(objectC.gameObject);
-            }
-            //Debug.Log(hunger);
-
             if (objectC.gameObject.tag == "grass" && hunger <= 50)
             {
                 //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
@@ -80,7 +77,6 @@ public class RabbitLogic : MonoBehaviour
             }
         }
         //Debug.Log(hunger);
-
     }
 
     void decreaseHunger()
@@ -97,12 +93,10 @@ public class RabbitLogic : MonoBehaviour
 
     IEnumerator dyingAnimation()
     {
-        Debug.Log("here");
         rabbitAnimate.SetBool("died", true);
         yield return new WaitForSeconds(0.65f);
         
         Destroy(gameObject);
-        Debug.Log("here2");
-
+        AddAnimals.worldRabbit--;
     }
 }

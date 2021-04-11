@@ -21,7 +21,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         //get character controller
         controller = GetComponent<CharacterController>();
-
+        AddAnimals.worldRabbit++;
     }
 
     // Update is called once per frame
