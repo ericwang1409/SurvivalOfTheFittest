@@ -84,7 +84,7 @@ public class GenerateMap : MonoBehaviour
                 Vector3 position = Random.insideUnitSphere * 35;
                 Instantiate(grass, new Vector3(position.x, 0.199f, position.y), Quaternion.Euler(-90, 0, 0));
                 numGrass++;
-                Debug.Log(numGrass);
+                //Debug.Log(numGrass);
             }
         }
         

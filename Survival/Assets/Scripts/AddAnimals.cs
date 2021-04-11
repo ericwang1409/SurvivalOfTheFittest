@@ -35,7 +35,7 @@ public class AddAnimals : MonoBehaviour
             //Scaling down the rabbit's size
             newRabbit.transform.localScale = Vector3.one;
             rabbitCounter++;
-            Debug.Log(rabbitCounter);
+            //Debug.Log(rabbitCounter);
         }
 
         //add lion
@@ -48,7 +48,7 @@ public class AddAnimals : MonoBehaviour
             //Scaling down the rabbit's size
             newLion.transform.localScale = new Vector3(19.14f, 19.14f, 19.14f);
             lionCounter++;
-            Debug.Log(lionCounter);
+            //Debug.Log(lionCounter);
         }
 
         if (Input.GetKeyDown(KeyCode.Y) && poacherCounter < totalPoacher)
@@ -59,8 +59,8 @@ public class AddAnimals : MonoBehaviour
             GameObject newPoacher = Instantiate(poacher, new Vector3(position.x, 0.432f, position.y), Quaternion.identity) as GameObject;
             //Scaling down the rabbit's size
             newPoacher.transform.localScale = new Vector3(0.1117118f, 0.1117118f, 0.1117118f);
-            lionCounter++;
-            Debug.Log(lionCounter);
+            poacherCounter++;
+            //Debug.Log(poacherCounter);
         }
     }
 }

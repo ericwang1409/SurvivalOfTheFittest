@@ -58,7 +58,7 @@ public class RabbitLogic : MonoBehaviour
         {
             if (objectC.gameObject.name != "CharacterController" && objectC.gameObject.name != "ThirdPersonPlayer" && objectC.gameObject.name != "island_G4C")
             {
-                Debug.Log(objectC);
+                //Debug.Log(objectC);
                 //Destroy(objectC.gameObject);
             }
             //Debug.Log(hunger);
