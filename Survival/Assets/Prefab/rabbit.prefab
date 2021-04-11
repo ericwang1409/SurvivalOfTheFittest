@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2723383897945436860}
   - component: {fileID: 6371945113501492796}
   - component: {fileID: 2935205527735929836}
+  - component: {fileID: 5441263640954452738}
   m_Layer: 0
   m_Name: rabbit
   m_TagString: Untagged
@@ -29,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5418388775379972807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.777741, y: 0.15454054, z: 11.61}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -129,4 +130,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d900c30a4c121b4db35330ef5fde4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diminishingTime: 0.35
+  dying: 0
+--- !u!95 &5441263640954452738
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5418388775379972807}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88a398e376a25ee4ba8db3abb27f44b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 1
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

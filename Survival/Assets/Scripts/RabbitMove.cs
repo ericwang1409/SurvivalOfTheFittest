@@ -12,7 +12,7 @@ public class RabbitMove : MonoBehaviour
     //Changing direction
     private float directionChangeInterval = 1;
     //Angle change
-    private float maxHeadingChange = 90;
+    private float maxHeadingChange = 120;
 
     //Us to control character
     CharacterController controller;
@@ -67,7 +67,7 @@ public class RabbitMove : MonoBehaviour
         //Does not update very frame
         playerVelocity.y += -9.81f * Time.deltaTime;
         //moves in x and y direction
-        controller.Move((forward + playerVelocity) * GlobalVars.rabbitSpeed/10 * Time.deltaTime);
+        controller.Move(((forward * GlobalVars.rabbitSpeed/10) + playerVelocity) * Time.deltaTime);
         //Debug.Log("here1");
 
         //If the rabbbit is farther than 35 from the cetner
