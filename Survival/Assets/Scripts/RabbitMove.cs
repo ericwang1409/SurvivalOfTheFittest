@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalVars
+/*public class GlobalVars : MonoBehaviour
 {
     public int rabbitSpeed = 10;
-}
+}*/
 
 public class RabbitMove : MonoBehaviour
 {
+    public int rabbitSpeed = 10;
     //public static float rabbitSpeed = 1;
     //Changing direction
     private float directionChangeInterval = 1;
@@ -26,8 +27,7 @@ public class RabbitMove : MonoBehaviour
 
     private bool jumped;
 
-    public RabbitLogic theLogic;
-    public GlobalVars globalVariables;
+    RabbitLogic theLogic;
 
     //private float closestGrass = int.MaxValue;
 
@@ -36,6 +36,9 @@ public class RabbitMove : MonoBehaviour
     // Start is called before the first frame update. Each rabbit has the script so it runs for each one
     void Awake()
     {
+        theLogic = gameObject.GetComponent<RabbitLogic>();
+        
+
         controller = GetComponent<CharacterController>();
 
         //Set random initial rotation. Which way rabbit is facing
@@ -74,7 +77,7 @@ public class RabbitMove : MonoBehaviour
             if (detected.gameObject.tag == "grass" && !lookingForGrass)
             {
                 lookingForGrass = true;
-                Vector3 goToGrass = Vector3.MoveTowards(transform.position, detected.transform.position, globalVariables.rabbitSpeed * Time.deltaTime);
+                Vector3 goToGrass = Vector3.MoveTowards(transform.position, detected.transform.position, rabbitSpeed * Time.deltaTime);
                 controller.Move(goToGrass * Time.deltaTime);
                 Debug.Log("here");
             }
@@ -141,7 +144,7 @@ public class RabbitMove : MonoBehaviour
         //Does not update very frame
         playerVelocity.y += -9.81f * Time.deltaTime;
         //moves in x and y direction
-        controller.Move(((forward * globalVariables.rabbitSpeed / 10) + playerVelocity) * Time.deltaTime);
+        controller.Move(((forward * rabbitSpeed / 10) + playerVelocity) * Time.deltaTime);
         //Debug.Log("here1");
 
         //If the rabbbit is farther than 35 from the cetner

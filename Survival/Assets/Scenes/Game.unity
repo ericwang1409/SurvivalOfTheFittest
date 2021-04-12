@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5890731, g: 0.42306724, b: 0.73978096, a: 1}
+  m_IndirectSpecularColor: {r: 0.58910704, g: 0.42310342, b: 0.74016464, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1559,6 +1559,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6371945113501492796, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
     - {fileID: 2723383897945436860, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
+    - {fileID: 2935205527735929836, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
 --- !u!1 &1576819638
 GameObject:
@@ -1822,6 +1823,7 @@ GameObject:
   - component: {fileID: 1719631116}
   - component: {fileID: 1719631118}
   - component: {fileID: 1719631117}
+  - component: {fileID: 1719631120}
   - component: {fileID: 1719631119}
   m_Layer: 0
   m_Name: ThirdPersonPlayer
@@ -1858,7 +1860,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1319323939}
-  thirdPersonLogic: {fileID: 0}
 --- !u!143 &1719631118
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1889,7 +1890,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cf419baf1b6914cb707dddea4d282e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theLogic: {fileID: 0}
+  rabbitSpeed: 10
+--- !u!114 &1719631120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719631115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d900c30a4c121b4db35330ef5fde4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hunger: 100
+  thirst: 100
+  rabbitAnimate: {fileID: 1921309837}
+  dying: 0
 --- !u!1 &1721329126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 724280e9429dafa429c1448ada420c2e, type: 3}

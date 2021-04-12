@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RabbitLogic : MonoBehaviour
 {
-    public int hunger = 100;
+    public int hunger = 50;
     public int thirst = 100;
     public static int sphereRadius = 1;
     public static int wsphereRadius = 1;
@@ -15,11 +15,13 @@ public class RabbitLogic : MonoBehaviour
 
     public bool dying = false;
 
-    public GlobalVars globalVariables;
+    RabbitMove movement;
 
     // Start is called before the first frame update
     void Start()
     {
+        movement = gameObject.GetComponent<RabbitMove>();
+        //globalVariables = gameObject.GetComponent<GlobalVars>();
         //rabbitAnimate = gameObject.GetComponent<Animator>();
         InvokeRepeating("decreaseHunger", 1.0f, 1.0f);
     }
@@ -30,11 +32,11 @@ public class RabbitLogic : MonoBehaviour
         //Debug.Log(hunger);
         if (hunger < 40)
         {
-            globalVariables.rabbitSpeed = 6;
+            movement.rabbitSpeed = 6;
         }
         else
         {
-            globalVariables.rabbitSpeed = 10;
+            movement.rabbitSpeed = 10;
         }
         if (hunger <= 0)
         {
@@ -47,11 +49,11 @@ public class RabbitLogic : MonoBehaviour
         }
         if (thirst < 40)
         {
-            globalVariables.rabbitSpeed = 6;
+            movement.rabbitSpeed = 6;
         }
         else
         {
-            globalVariables.rabbitSpeed = 10;
+            movement.rabbitSpeed = 10;
         }
         if (thirst <= 0)
         {

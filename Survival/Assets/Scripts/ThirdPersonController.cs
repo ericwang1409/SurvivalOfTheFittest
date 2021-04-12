@@ -19,11 +19,12 @@ public class ThirdPersonController : MonoBehaviour
 
     private bool jumped = false;
 
-    public RabbitLogic thirdPersonLogic;
+    RabbitLogic thirdPersonLogic;
 
     // Start is called before the first frame update
     void Start()
     {
+        thirdPersonLogic = gameObject.GetComponent<RabbitLogic>();
         //get character controller
         controller = GetComponent<CharacterController>();
         AddAnimals.worldRabbit++;
