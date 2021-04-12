@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.58910704, g: 0.42310342, b: 0.74016464, a: 1}
+  m_IndirectSpecularColor: {r: 0.5890731, g: 0.42306724, b: 0.73978096, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -463,7 +463,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232849038}
-  m_LocalRotation: {x: 0.07762006, y: -0.0000000042886183, z: 3.338901e-10, w: 0.99698305}
+  m_LocalRotation: {x: 0.07762006, y: 0.0000000042886175, z: -3.3389003e-10, w: 0.99698305}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1137,7 +1137,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319323937}
-  m_LocalRotation: {x: 0.08184325, y: 0.0000000018453667, z: -1.515392e-10, w: 0.9966452}
+  m_LocalRotation: {x: 0.081843264, y: -0.0000000018453666, z: 1.5153921e-10, w: 0.9966452}
   m_LocalPosition: {x: -6.095805, y: 1.457753, z: -33.20972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1803,7 +1803,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604879347}
-  m_LocalRotation: {x: 0.09520663, y: 0.000000016609421, z: -0.0000000015885432, w: 0.99545753}
+  m_LocalRotation: {x: 0.095206656, y: -0.000000018190125, z: 0.0000000017397237, w: 0.99545753}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1822,6 +1822,7 @@ GameObject:
   - component: {fileID: 1719631116}
   - component: {fileID: 1719631118}
   - component: {fileID: 1719631117}
+  - component: {fileID: 1719631119}
   m_Layer: 0
   m_Name: ThirdPersonPlayer
   m_TagString: Untagged
@@ -1857,6 +1858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1319323939}
+  thirdPersonLogic: {fileID: 0}
 --- !u!143 &1719631118
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1875,6 +1877,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.3, z: -0.03}
+--- !u!114 &1719631119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719631115}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66cf419baf1b6914cb707dddea4d282e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theLogic: {fileID: 0}
 --- !u!1 &1721329126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 724280e9429dafa429c1448ada420c2e, type: 3}
