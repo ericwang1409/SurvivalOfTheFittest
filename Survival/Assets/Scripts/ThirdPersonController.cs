@@ -7,6 +7,9 @@ public class ThirdPersonController : MonoBehaviour
     private CharacterController controller;
     public Camera cam;
 
+    //private int hunger = 100;
+    //private int thirst = 100;
+
     private float speed = 3f;
 
     private float turnSmoothTime = 0.1f;
@@ -16,16 +19,63 @@ public class ThirdPersonController : MonoBehaviour
 
     private bool jumped = false;
 
+    public RabbitLogic thirdPersonLogic;
+
     // Start is called before the first frame update
     void Start()
     {
         //get character controller
         controller = GetComponent<CharacterController>();
         AddAnimals.worldRabbit++;
+        //InvokeRepeating("decreaseHunger", 1.0f, 1.0f);
+
+
     }
 
     // Update is called once per frame
     void Update()
+    {
+        ThirdPersonMovement();
+        FindGrass();
+        FindWater();
+
+
+    }
+
+    void FindGrass()
+    {
+        //if (Physics.CheckSphere(transform.position, sphereRadius))
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.tsphereRadius);
+        foreach (var objectC in objectsCollided)
+        {
+            if (objectC.gameObject.tag == "grass" && thirdPersonLogic.hunger <= 50)
+            {
+                //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
+                //WaitForSeconds(1);
+                Destroy(objectC.gameObject);
+                GenerateMap.numGrass--;
+                thirdPersonLogic.hunger += 50;
+                //Debug.Log(RabbitLogic.hunger);
+
+            }
+        }
+        //Debug.Log("Hunger:" + hunger);
+    }
+
+    void FindWater()
+    {
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.tsphereRadius);
+        foreach (var objectC in objectsCollided)
+        {
+            if (objectC.gameObject.tag == "water" && thirdPersonLogic.thirst <= 50)
+            {
+                thirdPersonLogic.thirst += 50;
+                //Debug.Log(RabbitLogic.thirst);
+            }
+        }
+    }
+
+    void ThirdPersonMovement()
     {
         //get inputs for rabbit control; horizontal is A and D and vertical is W and S, creates a Vector with those inputs
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -61,7 +111,7 @@ public class ThirdPersonController : MonoBehaviour
         {
             //calculates the direction that the rabbit is moving in
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.transform.eulerAngles.y;
-            
+
             //calculates the smoothing of the angle, transforms
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -72,18 +122,27 @@ public class ThirdPersonController : MonoBehaviour
             //moves rabbit in the direction of what the camera is facing
             controller.Move((moveDir.normalized + Vector3.down) * speed * Time.deltaTime);
         }
-
-        
-
     }
 
     //puts in a delay so that there is no double jump, triple jump
     IEnumerator DelayJump()
     {
-        
+
         yield return new WaitForSeconds(.3f);
         jumped = false;
         //Debug.Log("here");
-        
+
     }
+    /*void decreaseHunger()
+    {
+        if (hunger > 0)
+        {
+            hunger -= 1;
+        }
+        if (thirst > 0)
+        {
+            thirst -= 1;
+        }
+    }*/
+
 }

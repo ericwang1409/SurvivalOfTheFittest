@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GlobalVars{
-    public static int rabbitSpeed = 10;
+public class GlobalVars
+{
+    public int rabbitSpeed = 10;
 }
 
 public class RabbitMove : MonoBehaviour
@@ -25,6 +26,13 @@ public class RabbitMove : MonoBehaviour
 
     private bool jumped;
 
+    public RabbitLogic theLogic;
+    public GlobalVars globalVariables;
+
+    //private float closestGrass = int.MaxValue;
+
+    private bool lookingForGrass = false;
+
     // Start is called before the first frame update. Each rabbit has the script so it runs for each one
     void Awake()
     {
@@ -41,15 +49,68 @@ public class RabbitMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IdleMotion();
-        
+        if (theLogic.hunger < 50 && theLogic.hunger < theLogic.thirst)
+        {
+            FindGrass();
+        }
+        else if (theLogic.thirst < 50 && theLogic.thirst < theLogic.hunger)
+        {
+            FindWater();
+        }
+        else
+        {
+            IdleMotion();
+        }
+
+
     }
 
-    void EatGrass()
+    void FindGrass()
     {
+        //if (Physics.CheckSphere(transform.position, sphereRadius))
+        Collider[] canSee = Physics.OverlapSphere(transform.position, 15);
+        foreach (var detected in canSee)
+        {
+            if (detected.gameObject.tag == "grass" && !lookingForGrass)
+            {
+                lookingForGrass = true;
+                Vector3 goToGrass = Vector3.MoveTowards(transform.position, detected.transform.position, globalVariables.rabbitSpeed * Time.deltaTime);
+                controller.Move(goToGrass * Time.deltaTime);
+                Debug.Log("here");
+            }
+            else
+            {
+                IdleMotion();
+            }
+        }
 
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);
+        foreach (var objectC in objectsCollided)
+        {
+            if (objectC.gameObject.tag == "grass" && theLogic.hunger <= 50)
+            {
+                //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
+                //WaitForSeconds(1);
+                Destroy(objectC.gameObject);
+                GenerateMap.numGrass--;
+                theLogic.hunger += 50;
+                lookingForGrass = false;
+            }
+        }
+        //Debug.Log("Hunger:" + hunger);
+    }
 
-        Vector3.MoveTowards(transform.position, )
+    void FindWater()
+    {
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.wsphereRadius);
+        foreach (var objectC in objectsCollided)
+        {
+            if (objectC.gameObject.tag == "water" && theLogic.thirst <= 50)
+            {
+                Debug.Log("HI");
+                theLogic.thirst += 50;
+            }
+        }
     }
 
     void IdleMotion()
@@ -80,7 +141,7 @@ public class RabbitMove : MonoBehaviour
         //Does not update very frame
         playerVelocity.y += -9.81f * Time.deltaTime;
         //moves in x and y direction
-        controller.Move(((forward * GlobalVars.rabbitSpeed / 10) + playerVelocity) * Time.deltaTime);
+        controller.Move(((forward * globalVariables.rabbitSpeed / 10) + playerVelocity) * Time.deltaTime);
         //Debug.Log("here1");
 
         //If the rabbbit is farther than 35 from the cetner

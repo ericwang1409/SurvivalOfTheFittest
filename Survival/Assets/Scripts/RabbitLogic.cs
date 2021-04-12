@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class RabbitLogic : MonoBehaviour
 {
-    private int hunger = 100;
-    private int thirst = 1000;
-    private int sphereRadius = 3;
+    public int hunger = 100;
+    public int thirst = 100;
+    public static int sphereRadius = 1;
+    public static int wsphereRadius = 1;
+
+    public static int tsphereRadius = 1;
 
     public Animator rabbitAnimate;
 
     public bool dying = false;
+
+    public GlobalVars globalVariables;
 
     // Start is called before the first frame update
     void Start()
@@ -23,14 +28,16 @@ public class RabbitLogic : MonoBehaviour
     void Update()
     {
         //Debug.Log(hunger);
-        if(hunger < 40){
-            GlobalVars.rabbitSpeed = 6;
+        if (hunger < 40)
+        {
+            globalVariables.rabbitSpeed = 6;
         }
         else
         {
-            GlobalVars.rabbitSpeed = 10;
+            globalVariables.rabbitSpeed = 10;
         }
-        if(hunger <= 0){
+        if (hunger <= 0)
+        {
             dying = true;
             if (dying)
             {
@@ -40,43 +47,18 @@ public class RabbitLogic : MonoBehaviour
         }
         if (thirst < 40)
         {
-            GlobalVars.rabbitSpeed = 6;
+            globalVariables.rabbitSpeed = 6;
         }
         else
         {
-            GlobalVars.rabbitSpeed = 10;
+            globalVariables.rabbitSpeed = 10;
         }
         if (thirst <= 0)
         {
             Destroy(gameObject);
             AddAnimals.worldRabbit--;
         }
-        
-    }
 
-    public static void FindGrass(Transform transform, int sphereRadius, int hunger, int thirst)
-    {
-        //if (Physics.CheckSphere(transform.position, sphereRadius))
-        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, sphereRadius);
-        foreach (var objectC in objectsCollided)
-        {
-            if (objectC.gameObject.tag == "grass" && hunger <= 50)
-            {
-                //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
-                //WaitForSeconds(1);
-                Destroy(objectC.gameObject);
-                GenerateMap.numGrass--;
-                hunger += 50;
-            }
-
-            //Debug.Log(thirst);
-            if (objectC.gameObject.tag == "water" && thirst <= 50)
-            {
-                Debug.Log("HI");
-                thirst += 50;
-            }
-        }
-        //Debug.Log(hunger);
     }
 
     void decreaseHunger()
@@ -95,7 +77,7 @@ public class RabbitLogic : MonoBehaviour
     {
         rabbitAnimate.SetBool("died", true);
         yield return new WaitForSeconds(0.65f);
-        
+
         Destroy(gameObject);
         AddAnimals.worldRabbit--;
     }
