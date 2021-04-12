@@ -32,12 +32,13 @@ public class RabbitMove : MonoBehaviour
     //private float closestGrass = int.MaxValue;
 
     private bool lookingForGrass = false;
+    private bool lookingForMate = false;
 
     // Start is called before the first frame update. Each rabbit has the script so it runs for each one
     void Awake()
     {
         theLogic = gameObject.GetComponent<RabbitLogic>();
-        
+
 
         controller = GetComponent<CharacterController>();
 
@@ -64,8 +65,10 @@ public class RabbitMove : MonoBehaviour
         {
             IdleMotion();
         }
-
-
+        if (theLogic.attraction > 50)
+        {
+            FindMate();
+        }
     }
 
     void FindGrass()
@@ -114,6 +117,40 @@ public class RabbitMove : MonoBehaviour
                 theLogic.thirst += 50;
             }
         }
+    }
+
+    void FindMate()
+    {
+        //if (Physics.CheckSphere(transform.position, sphereRadius))
+        Collider[] canSee = Physics.OverlapSphere(transform.position, 10);
+        foreach (var detected in canSee)
+        {
+            mate = detected.gameObject.GetComponent<RabbitLogic>();
+            if (detected.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender)
+            {
+                Vector3 goToGrass = Vector3.MoveTowards(transform.position, detected.transform.position, rabbitSpeed * Time.deltaTime);
+                controller.Move(goToGrass * Time.deltaTime);
+            }
+            else
+            {
+                IdleMotion();
+            }
+        }
+
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);
+        foreach (var objectC in objectsCollided)
+        {
+            if (objectC.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender)
+            {
+                //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
+                //WaitForSeconds(1);
+                Vector3 position = Random.insideUnitSphere * 35;
+                GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x, 0.432f, position.y), Quaternion.identity) as GameObject;
+                theLogic.attraction = 0;
+                mate.attraction = 0;
+            }
+        }
+        //Debug.Log("Hunger:" + hunger);
     }
 
     void IdleMotion()

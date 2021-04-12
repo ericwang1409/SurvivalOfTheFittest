@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class RabbitLogic : MonoBehaviour
 {
-    public int hunger = 50;
+    public int hunger = 100;
     public int thirst = 100;
+    public int attraction = 0;
+
+    public string gender;
     public static int sphereRadius = 1;
     public static int wsphereRadius = 1;
 
@@ -24,6 +27,16 @@ public class RabbitLogic : MonoBehaviour
         //globalVariables = gameObject.GetComponent<GlobalVars>();
         //rabbitAnimate = gameObject.GetComponent<Animator>();
         InvokeRepeating("decreaseHunger", 1.0f, 1.0f);
+        int generate = random.Next(0,2);
+        if (generate == 0)
+        {
+            gender = "female";
+        }
+        else if(generate == 1)
+        {
+            gender = "male";
+        }
+
     }
 
     // Update is called once per frame
@@ -60,7 +73,6 @@ public class RabbitLogic : MonoBehaviour
             Destroy(gameObject);
             AddAnimals.worldRabbit--;
         }
-
     }
 
     void decreaseHunger()
@@ -73,6 +85,7 @@ public class RabbitLogic : MonoBehaviour
         {
             thirst -= 1;
         }
+        attraction += 1;
     }
 
     IEnumerator dyingAnimation()
