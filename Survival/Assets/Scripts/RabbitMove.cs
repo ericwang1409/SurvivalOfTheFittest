@@ -9,6 +9,9 @@ using UnityEngine;
 
 public class RabbitMove : MonoBehaviour
 {
+    public GameObject rabbit;
+    public GameObject lion;
+    public GameObject poacher;
     public int rabbitSpeed = 10;
     //public static float rabbitSpeed = 1;
     //Changing direction
@@ -140,7 +143,7 @@ public class RabbitMove : MonoBehaviour
         Collider[] canSee = Physics.OverlapSphere(transform.position, 10);
         foreach (var detected in canSee)
         {
-            mate = detected.gameObject.GetComponent<RabbitLogic>();
+            var mate = detected.gameObject.GetComponent<RabbitLogic>();
             if (detected.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender)
             {
                 Vector3 goToGrass = Vector3.MoveTowards(transform.position, detected.transform.position, rabbitSpeed * Time.deltaTime);
@@ -155,11 +158,12 @@ public class RabbitMove : MonoBehaviour
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);
         foreach (var objectC in objectsCollided)
         {
+            var mate = objectC.gameObject.GetComponent<RabbitLogic>();
             if (objectC.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender)
             {
                 //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
                 //WaitForSeconds(1);
-                Vector3 position = Random.insideUnitSphere * 35;
+                Vector3 position = objectC.gameObject.transform.position;
                 GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x, 0.432f, position.y), Quaternion.identity) as GameObject;
                 theLogic.attraction = 0;
                 mate.attraction = 0;

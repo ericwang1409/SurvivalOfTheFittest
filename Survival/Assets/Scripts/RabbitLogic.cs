@@ -27,7 +27,7 @@ public class RabbitLogic : MonoBehaviour
         //globalVariables = gameObject.GetComponent<GlobalVars>();
         //rabbitAnimate = gameObject.GetComponent<Animator>();
         InvokeRepeating("decreaseHunger", 1.0f, 1.0f);
-        int generate = random.Next(0,2);
+        int generate = Random.Range(0,2);
         if (generate == 0)
         {
             gender = "female";
