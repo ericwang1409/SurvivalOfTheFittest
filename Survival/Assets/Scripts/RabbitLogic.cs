@@ -67,7 +67,7 @@ public class RabbitLogic : MonoBehaviour
     {
         if (hunger > 0)
         {
-            hunger -= 1;
+            hunger -= 2;
         }
         if (thirst > 0)
         {

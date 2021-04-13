@@ -33,6 +33,10 @@ public class RabbitMove : MonoBehaviour
 
     private bool lookingForGrass = false;
 
+    Vector3 grassPosition;
+
+    GameObject grass;
+
     // Start is called before the first frame update. Each rabbit has the script so it runs for each one
     void Awake()
     {
@@ -65,7 +69,6 @@ public class RabbitMove : MonoBehaviour
             IdleMotion();
         }
 
-
     }
 
     void FindGrass()
@@ -77,9 +80,19 @@ public class RabbitMove : MonoBehaviour
             if (detected.gameObject.tag == "grass" && !lookingForGrass)
             {
                 lookingForGrass = true;
-                Vector3 goToGrass = Vector3.MoveTowards(transform.position, detected.transform.position, rabbitSpeed * Time.deltaTime);
-                controller.Move(goToGrass * Time.deltaTime);
-                Debug.Log("here");
+                grassPosition = detected.transform.position;
+                grass = detected.gameObject;
+                Debug.Log("detected");
+            }
+            else if (lookingForGrass)
+            {
+                transform.LookAt(grass.transform);
+                Vector3 goToGrass = grassPosition - transform.position;
+                goToGrass = goToGrass.normalized;
+                controller.Move(goToGrass * 0.1f * Time.deltaTime);
+                Debug.Log("Rabbit location: " + transform.position);
+                Debug.Log("Grass location: " + grassPosition);
+                Debug.Log("Moving vector: " + goToGrass);
             }
             else
             {
@@ -98,6 +111,7 @@ public class RabbitMove : MonoBehaviour
                 GenerateMap.numGrass--;
                 theLogic.hunger += 50;
                 lookingForGrass = false;
+                Debug.Log("eat");
             }
         }
         //Debug.Log("Hunger:" + hunger);
