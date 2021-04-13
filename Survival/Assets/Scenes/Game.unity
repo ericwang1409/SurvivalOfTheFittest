@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.58910704, g: 0.42310342, b: 0.74016464, a: 1}
+  m_IndirectSpecularColor: {r: 0.5890731, g: 0.42306724, b: 0.73978096, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1890,6 +1890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cf419baf1b6914cb707dddea4d282e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rabbit: {fileID: 0}
+  lion: {fileID: 0}
+  poacher: {fileID: 0}
   rabbitSpeed: 10
 --- !u!114 &1719631120
 MonoBehaviour:
@@ -1903,8 +1906,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d900c30a4c121b4db35330ef5fde4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: 20
+  hunger: 100
   thirst: 100
+  attraction: 0
+  gender: 
   rabbitAnimate: {fileID: 1921309837}
   dying: 0
 --- !u!1 &1721329126 stripped
