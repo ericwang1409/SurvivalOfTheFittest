@@ -10,7 +10,7 @@ public class RabbitLogic : MonoBehaviour
 
     public string gender;
     public static int sphereRadius = 1;
-    public static int wsphereRadius = 1;
+    public static int wsphereRadius = 3;
 
     public static int tsphereRadius = 1;
 

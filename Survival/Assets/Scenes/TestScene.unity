@@ -900,6 +900,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1094044057171259919, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
+      propertyPath: hunger
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094044057171259919, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
+      propertyPath: thirst
+      value: 51
+      objectReference: {fileID: 0}
     - target: {fileID: 6428175815594929837, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
       propertyPath: m_Name
       value: rabbitParent
@@ -1695,6 +1703,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4652357577381760346, guid: e674ebbdc566d194d846bef0d42b8efc, type: 3}
+      propertyPath: m_TagString
+      value: water
+      objectReference: {fileID: 0}
     - target: {fileID: 8476878911758247089, guid: e674ebbdc566d194d846bef0d42b8efc, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1742,6 +1754,10 @@ PrefabInstance:
     - target: {fileID: 9144625948932046347, guid: e674ebbdc566d194d846bef0d42b8efc, type: 3}
       propertyPath: m_Name
       value: watering hole
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144625948932046347, guid: e674ebbdc566d194d846bef0d42b8efc, type: 3}
+      propertyPath: m_TagString
+      value: water
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e674ebbdc566d194d846bef0d42b8efc, type: 3}
