@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1094044057171259919}
   m_Layer: 0
   m_Name: rabbitParent
-  m_TagString: Untagged
+  m_TagString: rabbit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,6 +64,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cf419baf1b6914cb707dddea4d282e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rabbit: {fileID: 0}
+  lion: {fileID: 0}
+  poacher: {fileID: 0}
+  rabbitSpeed: 10
 --- !u!114 &1094044057171259919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d900c30a4c121b4db35330ef5fde4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hunger: 100
+  thirst: 100
+  attraction: 0
+  gender: 
   rabbitAnimate: {fileID: 8096999768527723650}
   dying: 0
 --- !u!1001 &4313623878385887104
