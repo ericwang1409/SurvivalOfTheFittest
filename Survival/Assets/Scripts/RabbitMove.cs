@@ -33,13 +33,17 @@ public class RabbitMove : MonoBehaviour
     RabbitLogic theLogic;
 
     private float closestGrass = int.MaxValue;
+    private float closestPond = int.MaxValue;
 
     private bool lookingForGrass = false;
+    private bool lookingForWater = false;
     private bool lookingForMate = false;
 
     Vector3 grassPosition;
+    Vector3 pondPosition;
 
     GameObject grass;
+    GameObject pond;
 
     // Start is called before the first frame update. Each rabbit has the script so it runs for each one
     void Awake()
@@ -87,8 +91,6 @@ public class RabbitMove : MonoBehaviour
             if (detected.gameObject.tag == "grass" && !lookingForGrass)
             {
                 lookingForGrass = true;
-                
-                Debug.Log("detected");
                 if (Vector3.Distance(detected.transform.position, transform.position) < closestGrass)
                 {
                     closestGrass = Vector3.Distance(grassPosition, transform.position);
@@ -96,22 +98,6 @@ public class RabbitMove : MonoBehaviour
                     grassPosition = detected.transform.position;
                 }
             }
-            /*else if (lookingForGrass)
-            {
-                transform.LookAt(grass.transform);
-                Vector3 goToGrass = grassPosition - transform.position;
-                goToGrass = goToGrass.normalized;
-                //goToGrass = transform.TransformDirection(goToGrass);
-                controller.Move(goToGrass  * Time.deltaTime);
-                Debug.Log(Time.deltaTime);
-                *//*Debug.Log("Rabbit location: " + transform.position);
-                Debug.Log("Grass location: " + grassPosition);
-                Debug.Log("Moving vector: " + goToGrass);*//*
-            }*/
-            /*else
-            {
-                IdleMotion();
-            }*/
         }
 
         if (!lookingForGrass)
@@ -119,7 +105,7 @@ public class RabbitMove : MonoBehaviour
             IdleMotion();
         }
 
-        if (lookingForGrass)
+        if (lookingForGrass && grass != null)
         {
             transform.LookAt(grass.transform);
             Vector3 goToGrass = grassPosition - transform.position;
@@ -127,9 +113,26 @@ public class RabbitMove : MonoBehaviour
             //goToGrass = transform.TransformDirection(goToGrass);
             controller.Move(goToGrass * Time.deltaTime);
             //Debug.Log(Time.deltaTime);
-            Debug.Log("Rabbit location: " + transform.position);
+            /*Debug.Log("Rabbit location: " + transform.position);
             Debug.Log("Grass location: " + grassPosition);
-            Debug.Log("Moving vector: " + goToGrass);
+            Debug.Log("Moving vector: " + goToGrass);*/
+            //If contacted with the floor
+            if (controller.isGrounded && !jumped)
+            {
+                playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
+                StartCoroutine(DelayJump());
+                jumped = true;
+            }
+            else if (!controller.isGrounded)
+            {
+                //playerVelocity.y += -9.81f * Time.deltaTime;
+                controller.Move(Vector3.down * 3 * Time.deltaTime);
+            }
+
+            //Does not update very frame
+            playerVelocity.y += -9.81f * Time.deltaTime;
+
+            controller.Move(playerVelocity * Time.deltaTime);
         }
 
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);
@@ -137,31 +140,86 @@ public class RabbitMove : MonoBehaviour
         {
             if (objectC.gameObject.tag == "grass" && theLogic.hunger <= 50)
             {
-                //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
-                //WaitForSeconds(1);
                 Destroy(objectC.gameObject);
                 GenerateMap.numGrass--;
                 theLogic.hunger += 50;
                 lookingForGrass = false;
                 closestGrass = int.MaxValue;
 
-                Debug.Log("eat");
+                
             }
         }
-        //Debug.Log("Hunger:" + hunger);
+
+        
     }
 
     void FindWater()
     {
+        //if (Physics.CheckSphere(transform.position, sphereRadius))
+        Collider[] canSee = Physics.OverlapSphere(transform.position, 15);
+        foreach (var detected in canSee)
+        {
+            if (detected.gameObject.tag == "water" && !lookingForWater)
+            {
+                lookingForWater = true;
+                if (Vector3.Distance(detected.transform.position, transform.position) < closestPond)
+                {
+                    closestPond = Vector3.Distance(pondPosition, transform.position);
+                    pond = detected.gameObject;
+                    pondPosition = detected.transform.position;
+                }
+            }
+        }
+
+        if (!lookingForWater)
+        {
+            IdleMotion();
+        }
+
+        if (lookingForWater)
+        {
+            transform.LookAt(pond.transform);
+            Vector3 goToPond = pondPosition - transform.position;
+            goToPond = goToPond.normalized;
+            //goToGrass = transform.TransformDirection(goToGrass);
+            controller.Move(goToPond * Time.deltaTime);
+            //Debug.Log(Time.deltaTime);
+            Debug.Log("Rabbit location: " + transform.position);
+            Debug.Log("Grass location: " + grassPosition);
+            Debug.Log("Moving vector: " + goToPond);
+
+            //If contacted with the floor
+            if (controller.isGrounded && !jumped)
+            {
+                playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
+                StartCoroutine(DelayJump());
+                jumped = true;
+            }
+            else if (!controller.isGrounded)
+            {
+                //playerVelocity.y += -9.81f * Time.deltaTime;
+                controller.Move(Vector3.down * 3 * Time.deltaTime);
+            }
+
+            //Does not update very frame
+            playerVelocity.y += -9.81f * Time.deltaTime;
+
+            controller.Move(playerVelocity * Time.deltaTime);
+        }
+
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.wsphereRadius);
         foreach (var objectC in objectsCollided)
         {
-            if (objectC.gameObject.tag == "water" && theLogic.thirst <= 50)
+            if (objectC.gameObject.tag == "water" && theLogic.hunger <= 50)
             {
-                Debug.Log("HI");
+                
+                
                 theLogic.thirst += 50;
+                lookingForWater = false;
+                closestPond = int.MaxValue;
             }
         }
+        
     }
 
     /*void FindMate()
