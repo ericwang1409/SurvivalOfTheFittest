@@ -15,6 +15,10 @@ public class AddAnimals : MonoBehaviour
     public int totalLion;
     public int totalPoacher;
 
+    public static int worldRabbit;
+    public static int worldLion;
+    public static int worldPoacher;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,7 @@ public class AddAnimals : MonoBehaviour
             //Scaling down the rabbit's size
             newRabbit.transform.localScale = Vector3.one;
             rabbitCounter++;
+            worldRabbit++;
             //Debug.Log(rabbitCounter);
         }
 
@@ -48,9 +53,11 @@ public class AddAnimals : MonoBehaviour
             //Scaling down the rabbit's size
             newLion.transform.localScale = new Vector3(19.14f, 19.14f, 19.14f);
             lionCounter++;
+            worldLion++;
             //Debug.Log(lionCounter);
         }
 
+        //add poacher
         if (Input.GetKeyDown(KeyCode.Y) && poacherCounter < totalPoacher)
         {
             //Random position in 35 unit sphere. Always spawns from middle
@@ -60,6 +67,7 @@ public class AddAnimals : MonoBehaviour
             //Scaling down the rabbit's size
             newPoacher.transform.localScale = new Vector3(0.1117118f, 0.1117118f, 0.1117118f);
             poacherCounter++;
+            worldPoacher++;
             //Debug.Log(poacherCounter);
         }
     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - grass
   - water
+  - rabbit
   layers:
   - Default
   - TransparentFX

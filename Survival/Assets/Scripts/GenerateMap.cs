@@ -64,13 +64,16 @@ public class GenerateMap : MonoBehaviour
         }
 
         StartCoroutine(AddGrass());
+
+        Vector3 test = Vector3.MoveTowards(new Vector3(0, 0, 0), new Vector3(2, 2, 2), Time.deltaTime);
+
+        Debug.Log(test);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
+
     }
 
     //keeps adding grass until a limit of 100
