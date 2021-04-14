@@ -51,7 +51,6 @@ public class AddAnimals : MonoBehaviour
             //New rabbit object is instnatiated at that position
             GameObject newLion = Instantiate(lion, new Vector3(position.x, 0.674f, position.y), Quaternion.identity) as GameObject;
             //Scaling down the rabbit's size
-            newLion.transform.localScale = new Vector3(19.14f, 19.14f, 19.14f);
             lionCounter++;
             worldLion++;
             //Debug.Log(lionCounter);

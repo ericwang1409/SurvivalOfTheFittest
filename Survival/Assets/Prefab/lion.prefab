@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 7540375579841152392}
   - component: {fileID: 4507575232898313831}
   - component: {fileID: 7927959710490667431}
+  - component: {fileID: 5058596956628266367}
   m_Layer: 0
   m_Name: lion
   m_TagString: Untagged
@@ -424,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acee0cbbe2539f44d99347fc0bb81752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lionSpeed: 10
 --- !u!143 &7927959710490667431
 CharacterController:
   m_ObjectHideFlags: 0
@@ -442,3 +444,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: -0.013, z: -0.009}
+--- !u!95 &5058596956628266367
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8332846592400417885}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88a398e376a25ee4ba8db3abb27f44b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

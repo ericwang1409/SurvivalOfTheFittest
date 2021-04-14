@@ -134,6 +134,11 @@ public class RabbitMove : MonoBehaviour
 
             controller.Move(playerVelocity * Time.deltaTime);
         }
+        else if (grass == null)
+        {
+            lookingForGrass = false;
+            closestGrass = int.MaxValue;
+        }
 
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);
         foreach (var objectC in objectsCollided)
