@@ -35,9 +35,9 @@ public class AddAnimals : MonoBehaviour
             //Random position in 35 unit sphere. Always spawns from middle
             Vector3 position = Random.insideUnitSphere * 35;
             //New rabbit object is instnatiated at that position
-            GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x, 0.2f, position.y), Quaternion.identity) as GameObject;
+            Instantiate(rabbit, new Vector3(position.x, 0.2f, position.y), Quaternion.identity);
             //Scaling down the rabbit's size
-            newRabbit.transform.localScale = Vector3.one;
+            //newRabbit.transform.localScale = Vector3.one;
             rabbitCounter++;
             worldRabbit++;
             //Debug.Log(rabbitCounter);

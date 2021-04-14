@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6428175815594929837
+--- !u!1 &1511071082952753851
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,58 +8,90 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8778681597504497083}
-  - component: {fileID: 1094044057171259905}
-  - component: {fileID: 1094044057171259906}
-  - component: {fileID: 1094044057171259919}
+  - component: {fileID: 1511071082952753852}
+  - component: {fileID: 1511071082952753854}
+  - component: {fileID: 1511071082952753853}
+  - component: {fileID: 1511071082952753824}
+  - component: {fileID: 1511071082952753855}
   m_Layer: 0
-  m_Name: rabbitParent
-  m_TagString: rabbit
+  m_Name: ThirdPersonPlayer
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8778681597504497083
+--- !u!4 &1511071082952753852
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6428175815594929837}
+  m_GameObject: {fileID: 1511071082952753851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2730656, y: -5.014187, z: 22.558317}
+  m_LocalPosition: {x: -6.095805, y: 0.716, z: -29.367397}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8910153466552881149}
+  - {fileID: 6089513665831198910}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &1094044057171259905
+--- !u!143 &1511071082952753854
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6428175815594929837}
+  m_GameObject: {fileID: 1511071082952753851}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.03
-  m_Radius: 0.23
+  m_Height: 0.35
+  m_Radius: 0.12
   m_SlopeLimit: 45
-  m_StepOffset: 0.003
+  m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.05, z: -0.03}
---- !u!114 &1094044057171259906
+  m_Center: {x: 0, y: -0.3, z: -0.03}
+--- !u!114 &1511071082952753853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6428175815594929837}
+  m_GameObject: {fileID: 1511071082952753851}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b45e6f20bb90842867270c145745f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+--- !u!114 &1511071082952753824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511071082952753851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d900c30a4c121b4db35330ef5fde4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hunger: 100
+  thirst: 100
+  attraction: 0
+  gender: 
+  rabbitAnimate: {fileID: 6880136111215817665}
+  dying: 0
+--- !u!114 &1511071082952753855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511071082952753851}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66cf419baf1b6914cb707dddea4d282e, type: 3}
   m_Name: 
@@ -68,42 +100,32 @@ MonoBehaviour:
   lion: {fileID: 0}
   poacher: {fileID: 0}
   rabbitSpeed: 10
---- !u!114 &1094044057171259919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6428175815594929837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d900c30a4c121b4db35330ef5fde4a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hunger: 60
-  thirst: 100
-  attraction: 0
-  gender: 
-  rabbitAnimate: {fileID: 8096999768527723650}
-  dying: 0
---- !u!1001 &4313623878385887104
+--- !u!1001 &1511071083108600003
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 8778681597504497083}
+    m_TransformParent: {fileID: 1511071082952753852}
     m_Modifications:
-    - target: {fileID: 2723383897945436860, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2935205527735929836, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: rabbitAnimate
+      value: 
+      objectReference: {fileID: 6880136111215817665}
     - target: {fileID: 4646073582710745213, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646073582710745213, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.00575
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646073582710745213, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.00575
+      objectReference: {fileID: 0}
+    - target: {fileID: 4646073582710745213, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.896047
       objectReference: {fileID: 0}
     - target: {fileID: 4646073582710745213, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -111,11 +133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4646073582710745213, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.23928928
+      value: -0.511
       objectReference: {fileID: 0}
     - target: {fileID: 4646073582710745213, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.000024795532
+      value: 0.028999329
       objectReference: {fileID: 0}
     - target: {fileID: 4646073582710745213, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -150,49 +172,21 @@ PrefabInstance:
       value: rabbit
       objectReference: {fileID: 0}
     - target: {fileID: 5418388775379972807, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441263640954452738, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441263640954452738, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5778408120905831186, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6371945113501492796, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_Height
-      value: 0.08891605
-      objectReference: {fileID: 0}
-    - target: {fileID: 6371945113501492796, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_Radius
-      value: 0.016368955
-      objectReference: {fileID: 0}
-    - target: {fileID: 6371945113501492796, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6371945113501492796, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-      propertyPath: m_Center.y
-      value: 0
+      propertyPath: m_TagString
+      value: rabbit
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 2935205527735929836, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-    - {fileID: 2723383897945436860, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
     - {fileID: 6371945113501492796, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
+    - {fileID: 2723383897945436860, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
+    - {fileID: 2935205527735929836, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
---- !u!4 &8910153466552881149 stripped
+--- !u!4 &6089513665831198910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4646073582710745213, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-  m_PrefabInstance: {fileID: 4313623878385887104}
+  m_PrefabInstance: {fileID: 1511071083108600003}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &8096999768527723650 stripped
+--- !u!95 &6880136111215817665 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5441263640954452738, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
-  m_PrefabInstance: {fileID: 4313623878385887104}
+  m_PrefabInstance: {fileID: 1511071083108600003}
   m_PrefabAsset: {fileID: 0}

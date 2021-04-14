@@ -32,7 +32,7 @@ public class RabbitMove : MonoBehaviour
 
     RabbitLogic theLogic;
 
-    //private float closestGrass = int.MaxValue;
+    private float closestGrass = int.MaxValue;
 
     private bool lookingForGrass = false;
     private bool lookingForMate = false;
@@ -74,7 +74,7 @@ public class RabbitMove : MonoBehaviour
         }
         if (theLogic.attraction > 50)
         {
-            FindMate();
+            //FindMate();
         }
     }
 
@@ -87,24 +87,49 @@ public class RabbitMove : MonoBehaviour
             if (detected.gameObject.tag == "grass" && !lookingForGrass)
             {
                 lookingForGrass = true;
-                grassPosition = detected.transform.position;
-                grass = detected.gameObject;
+                
                 Debug.Log("detected");
+                if (Vector3.Distance(detected.transform.position, transform.position) < closestGrass)
+                {
+                    closestGrass = Vector3.Distance(grassPosition, transform.position);
+                    grass = detected.gameObject;
+                    grassPosition = detected.transform.position;
+                }
             }
-            else if (lookingForGrass)
+            /*else if (lookingForGrass)
             {
                 transform.LookAt(grass.transform);
                 Vector3 goToGrass = grassPosition - transform.position;
                 goToGrass = goToGrass.normalized;
-                controller.Move(goToGrass * 0.1f * Time.deltaTime);
-                Debug.Log("Rabbit location: " + transform.position);
+                //goToGrass = transform.TransformDirection(goToGrass);
+                controller.Move(goToGrass  * Time.deltaTime);
+                Debug.Log(Time.deltaTime);
+                *//*Debug.Log("Rabbit location: " + transform.position);
                 Debug.Log("Grass location: " + grassPosition);
-                Debug.Log("Moving vector: " + goToGrass);
-            }
-            else
+                Debug.Log("Moving vector: " + goToGrass);*//*
+            }*/
+            /*else
             {
                 IdleMotion();
-            }
+            }*/
+        }
+
+        if (!lookingForGrass)
+        {
+            IdleMotion();
+        }
+
+        if (lookingForGrass)
+        {
+            transform.LookAt(grass.transform);
+            Vector3 goToGrass = grassPosition - transform.position;
+            goToGrass = goToGrass.normalized;
+            //goToGrass = transform.TransformDirection(goToGrass);
+            controller.Move(goToGrass * Time.deltaTime);
+            //Debug.Log(Time.deltaTime);
+            Debug.Log("Rabbit location: " + transform.position);
+            Debug.Log("Grass location: " + grassPosition);
+            Debug.Log("Moving vector: " + goToGrass);
         }
 
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);
@@ -118,6 +143,8 @@ public class RabbitMove : MonoBehaviour
                 GenerateMap.numGrass--;
                 theLogic.hunger += 50;
                 lookingForGrass = false;
+                closestGrass = int.MaxValue;
+
                 Debug.Log("eat");
             }
         }
@@ -137,7 +164,7 @@ public class RabbitMove : MonoBehaviour
         }
     }
 
-    void FindMate()
+    /*void FindMate()
     {
         //if (Physics.CheckSphere(transform.position, sphereRadius))
         Collider[] canSee = Physics.OverlapSphere(transform.position, 10);
@@ -170,7 +197,7 @@ public class RabbitMove : MonoBehaviour
             }
         }
         //Debug.Log("Hunger:" + hunger);
-    }
+    }*/
 
     void IdleMotion()
     {
