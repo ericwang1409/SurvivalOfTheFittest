@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d900c30a4c121b4db35330ef5fde4a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hunger: 60
+  hunger: 100
   thirst: 100
   attraction: 0
   gender: 

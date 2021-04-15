@@ -73,16 +73,16 @@ public class RabbitMove : MonoBehaviour
         {
             FindWater();
         }
+        else if (theLogic.attraction > 50 && theLogic.hunger > 50 && theLogic.thirst > 50)
+        {
+            FindMate();
+            //Debug.Log("here");
+        }
         else
         {
             IdleMotion();
         }
-        //Debug.Log(theLogic.attraction);
-        if (theLogic.attraction > 50)
-        {
-            //Debug.Log("IGHT");
-            FindMate();
-        }
+        
     }
 
     void FindGrass()
@@ -233,7 +233,7 @@ public class RabbitMove : MonoBehaviour
     void FindMate()
     {
         //Debug.Log("Here");
-        Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 10);
+        Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 15);
         foreach (var detected in rabbitCanSee)
         {
             var mate = detected.gameObject.GetComponent<RabbitLogic>();
@@ -292,10 +292,11 @@ public class RabbitMove : MonoBehaviour
                 Vector3 position = transform.position;
                 GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x, 0.432f, position.y), Quaternion.identity) as GameObject;
                 theLogic.attraction = 0;
-                mate.attraction = 0;
+                //mate.attraction = 0;
                 lookingForMate = false;
+                Debug.Log("here");
                 closestRabbit = int.MaxValue;
-
+                
             }
         }
     }
@@ -306,7 +307,7 @@ public class RabbitMove : MonoBehaviour
         float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
 
         //Eurlerangles is the angle. Make the movements gradual 
-        transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
+        transform.eulerAngles = Vector3.Slerp(new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z), targetRotation, Time.deltaTime * directionChangeInterval);
         //vecto forward value is 0, 0, 1
         var forward = transform.TransformDirection(Vector3.forward);
         //Vector value 0, 1, 0
