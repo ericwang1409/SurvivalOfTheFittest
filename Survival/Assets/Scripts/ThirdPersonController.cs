@@ -94,8 +94,8 @@ public class ThirdPersonController : MonoBehaviour
             if (objectC.gameObject.tag == "rabbit" && hello)
             {
                 Debug.Log("Here");
-                Vector3 position = objectC.transform.position;
-                GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x + (float)(0.4 + 7.3), 0.2f, position.y - (float)0.296), Quaternion.identity) as GameObject;
+                Vector3 yeet = objectC.transform.position;
+                GameObject newRabbit = Instantiate(rabbit, new Vector3(yeet.x + (float)(0.4 + 7.3), 0.2f, yeet.y - (float)0.296), Quaternion.identity) as GameObject;
                 thirdPersonLogic.attraction = 0;
                 mate.attraction = 0;
                 //hello = false;
@@ -109,7 +109,6 @@ public class ThirdPersonController : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
 
         //if the rabbit is on the ground and the player is pressing wasd, and the rabbit did not jump yet makes it jump
 
