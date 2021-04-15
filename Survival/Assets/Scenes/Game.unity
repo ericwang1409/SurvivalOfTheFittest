@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.58910704, g: 0.42310342, b: 0.74016464, a: 1}
+  m_IndirectSpecularColor: {r: 0.5890731, g: 0.42306724, b: 0.73978096, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -463,7 +463,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232849038}
-  m_LocalRotation: {x: 0.07762006, y: -0.0000000042886183, z: 3.338901e-10, w: 0.99698305}
+  m_LocalRotation: {x: 0.07762006, y: 0.0000000042886175, z: -3.3389003e-10, w: 0.99698305}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1132,7 +1132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319323937}
-  m_LocalRotation: {x: 0.08184325, y: 0.0000000018453667, z: -1.515392e-10, w: 0.9966452}
+  m_LocalRotation: {x: 0.081843264, y: -0.0000000018453666, z: 1.5153921e-10, w: 0.9966452}
   m_LocalPosition: {x: -6.095805, y: 1.457753, z: -33.20972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1619,7 +1619,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604879347}
-  m_LocalRotation: {x: 0.09520663, y: 0.000000016609421, z: -0.0000000015885432, w: 0.99545753}
+  m_LocalRotation: {x: 0.095206656, y: -0.000000018190125, z: 0.0000000017397237, w: 0.99545753}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1800,7 +1800,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868141183}
-  m_LocalRotation: {x: 0.05898386, y: -0.0000000042941046, z: 2.5372462e-10, w: 0.99825895}
+  m_LocalRotation: {x: 0.05898386, y: 0.0000000042941077, z: -2.537248e-10, w: 0.99825895}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1956,5 +1956,21 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1319323939}
+    - target: {fileID: 1511071082952753853, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
+      propertyPath: rabbit
+      value: 
+      objectReference: {fileID: 5418388775379972807, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
+    - target: {fileID: 1511071082952753855, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
+      propertyPath: lion
+      value: 
+      objectReference: {fileID: 4541307864186971466, guid: 59bb425f2878bd546a7052c25c7bc86d, type: 3}
+    - target: {fileID: 1511071082952753855, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
+      propertyPath: rabbit
+      value: 
+      objectReference: {fileID: 6428175815594929837, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
+    - target: {fileID: 1511071082952753855, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
+      propertyPath: poacher
+      value: 
+      objectReference: {fileID: 1443582099841763734, guid: 0f8b206a689164d48b9cea5f93d9e78e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}

@@ -34,6 +34,7 @@ public class RabbitMove : MonoBehaviour
 
     private float closestGrass = int.MaxValue;
     private float closestPond = int.MaxValue;
+    private float closestRabbit = int.MaxValue;
 
     private bool lookingForGrass = false;
     private bool lookingForWater = false;
@@ -41,10 +42,10 @@ public class RabbitMove : MonoBehaviour
 
     Vector3 grassPosition;
     Vector3 pondPosition;
-
+    Vector3 rabbitPosition;
     GameObject grass;
     GameObject pond;
-
+    GameObject rabbitDetect;
     // Start is called before the first frame update. Each rabbit has the script so it runs for each one
     void Awake()
     {
@@ -76,9 +77,11 @@ public class RabbitMove : MonoBehaviour
         {
             IdleMotion();
         }
+        //Debug.Log(theLogic.attraction);
         if (theLogic.attraction > 50)
         {
-            //FindMate();
+            //Debug.Log("IGHT");
+            FindMate();
         }
     }
 
@@ -151,11 +154,11 @@ public class RabbitMove : MonoBehaviour
                 lookingForGrass = false;
                 closestGrass = int.MaxValue;
 
-                
+
             }
         }
 
-        
+
     }
 
     void FindWater()
@@ -217,32 +220,65 @@ public class RabbitMove : MonoBehaviour
         {
             if (objectC.gameObject.tag == "water" && theLogic.hunger <= 50)
             {
-                
-                
+
+
                 theLogic.thirst += 50;
                 lookingForWater = false;
                 closestPond = int.MaxValue;
             }
         }
-        
+
     }
 
-    /*void FindMate()
+    void FindMate()
     {
-        //if (Physics.CheckSphere(transform.position, sphereRadius))
-        Collider[] canSee = Physics.OverlapSphere(transform.position, 10);
-        foreach (var detected in canSee)
+        //Debug.Log("Here");
+        Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 10);
+        foreach (var detected in rabbitCanSee)
         {
             var mate = detected.gameObject.GetComponent<RabbitLogic>();
-            if (detected.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender)
+            if (detected.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender && !lookingForMate)
             {
-                Vector3 goToGrass = Vector3.MoveTowards(transform.position, detected.transform.position, rabbitSpeed * Time.deltaTime);
-                controller.Move(goToGrass * Time.deltaTime);
+                lookingForMate = true;
+                if (Vector3.Distance(detected.transform.position, transform.position) < closestRabbit)
+                {
+                    closestRabbit = Vector3.Distance(rabbitPosition, transform.position);
+                    rabbitDetect = detected.gameObject;
+                    rabbitPosition = detected.transform.position;
+                }
             }
-            else
+        }
+
+        if (!lookingForMate)
+        {
+            IdleMotion();
+        }
+
+        if (lookingForMate)
+        {
+            transform.LookAt(rabbitDetect.transform);
+            Vector3 goToRabbit = rabbitPosition - transform.position;
+            goToRabbit = goToRabbit.normalized;
+
+            controller.Move(goToRabbit * Time.deltaTime);
+
+            //If contacted with the floor
+            if (controller.isGrounded && !jumped)
             {
-                IdleMotion();
+                playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
+                StartCoroutine(DelayJump());
+                jumped = true;
             }
+            else if (!controller.isGrounded)
+            {
+                //playerVelocity.y += -9.81f * Time.deltaTime;
+                controller.Move(Vector3.down * 3 * Time.deltaTime);
+            }
+
+            //Does not update very frame
+            playerVelocity.y += -9.81f * Time.deltaTime;
+
+            controller.Move(playerVelocity * Time.deltaTime);
         }
 
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);
@@ -253,14 +289,16 @@ public class RabbitMove : MonoBehaviour
             {
                 //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
                 //WaitForSeconds(1);
-                Vector3 position = objectC.gameObject.transform.position;
+                Vector3 position = transform.position;
                 GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x, 0.432f, position.y), Quaternion.identity) as GameObject;
                 theLogic.attraction = 0;
                 mate.attraction = 0;
+                lookingForMate = false;
+                closestRabbit = int.MaxValue;
+
             }
         }
-        //Debug.Log("Hunger:" + hunger);
-    }*/
+    }
 
     void IdleMotion()
     {

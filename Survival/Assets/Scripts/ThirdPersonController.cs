@@ -7,6 +7,9 @@ public class ThirdPersonController : MonoBehaviour
     private CharacterController controller;
     public Camera cam;
 
+    private bool hello = true;
+
+    public GameObject rabbit;
     //private int hunger = 100;
     //private int thirst = 100;
 
@@ -39,8 +42,7 @@ public class ThirdPersonController : MonoBehaviour
         ThirdPersonMovement();
         FindGrass();
         FindWater();
-
-
+        FindMate();
     }
 
     void FindGrass()
@@ -72,6 +74,31 @@ public class ThirdPersonController : MonoBehaviour
             {
                 thirdPersonLogic.thirst += 50;
                 //Debug.Log(RabbitLogic.thirst);
+            }
+        }
+    }
+
+    void FindMate()
+    {
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.tsphereRadius);
+        foreach (var objectC in objectsCollided)
+        {
+            //if (objectC.gameObject.tag == "rabbit")
+            //{
+            var mate = objectC.gameObject.GetComponent<RabbitLogic>();
+            //    Debug.Log(mate.gender);
+            //    Debug.Log(mate.attraction);
+            //    Debug.Log(thirdPersonLogic.gender);
+            // }
+
+            if (objectC.gameObject.tag == "rabbit" && hello)
+            {
+                Debug.Log("Here");
+                Vector3 position = objectC.transform.position;
+                GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x + (float)(0.4 + 7.3), 0.2f, position.y - (float)0.296), Quaternion.identity) as GameObject;
+                thirdPersonLogic.attraction = 0;
+                mate.attraction = 0;
+                //hello = false;
             }
         }
     }

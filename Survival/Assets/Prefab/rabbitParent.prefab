@@ -64,9 +64,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cf419baf1b6914cb707dddea4d282e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rabbit: {fileID: 0}
-  lion: {fileID: 0}
-  poacher: {fileID: 0}
+  rabbit: {fileID: 6428175815594929837}
+  lion: {fileID: 4541307864186971466, guid: 59bb425f2878bd546a7052c25c7bc86d, type: 3}
+  poacher: {fileID: 1443582099841763734, guid: 0f8b206a689164d48b9cea5f93d9e78e, type: 3}
   rabbitSpeed: 10
 --- !u!114 &1094044057171259919
 MonoBehaviour:
