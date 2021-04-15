@@ -67,11 +67,12 @@ public class ThirdPersonController : MonoBehaviour
 
     void FindWater()
     {
-        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.tsphereRadius);
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.wsphereRadius);
         foreach (var objectC in objectsCollided)
         {
             if (objectC.gameObject.tag == "water" && thirdPersonLogic.thirst <= 50)
             {
+                
                 thirdPersonLogic.thirst += 50;
                 //Debug.Log(RabbitLogic.thirst);
             }
@@ -80,7 +81,8 @@ public class ThirdPersonController : MonoBehaviour
 
     void FindMate()
     {
-        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.tsphereRadius);
+        //Debug.Log(thirdPersonLogic.attraction);
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);
         foreach (var objectC in objectsCollided)
         {
             //if (objectC.gameObject.tag == "rabbit")
@@ -90,15 +92,14 @@ public class ThirdPersonController : MonoBehaviour
             //    Debug.Log(mate.attraction);
             //    Debug.Log(thirdPersonLogic.gender);
             // }
-
-            if (objectC.gameObject.tag == "rabbit" && hello)
+            if (objectC.gameObject.tag == "rabbit" && mate.attraction > 50 && thirdPersonLogic.attraction > 50 && mate.gender != thirdPersonLogic.gender)
             {
-                Debug.Log("Here");
-                Vector3 yeet = objectC.transform.position;
-                GameObject newRabbit = Instantiate(rabbit, new Vector3(yeet.x + (float)(0.4 + 7.3), 0.2f, yeet.y - (float)0.296), Quaternion.identity) as GameObject;
+                //Debug.Log("Here");
+                Vector3 yeet = transform.position;
+                GameObject newRabbit = Instantiate(rabbit, new Vector3(yeet.x, 0.2f, yeet.z), Quaternion.identity) as GameObject;
                 thirdPersonLogic.attraction = 0;
                 mate.attraction = 0;
-                //hello = false;
+                hello = false;
             }
         }
     }

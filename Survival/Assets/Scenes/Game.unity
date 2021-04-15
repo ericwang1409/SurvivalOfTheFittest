@@ -463,7 +463,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232849038}
-  m_LocalRotation: {x: 0.07762006, y: 0.0000000042886175, z: -3.3389003e-10, w: 0.99698305}
+  m_LocalRotation: {x: 0.07762006, y: -0.0000000042886183, z: 3.338901e-10, w: 0.99698305}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1132,7 +1132,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319323937}
-  m_LocalRotation: {x: 0.081843264, y: -0.0000000018453666, z: 1.5153921e-10, w: 0.9966452}
+  m_LocalRotation: {x: 0.08184325, y: 0.0000000018453667, z: -1.515392e-10, w: 0.9966452}
   m_LocalPosition: {x: -6.095805, y: 1.457753, z: -33.20972}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1619,7 +1619,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604879347}
-  m_LocalRotation: {x: 0.095206656, y: -0.000000018190125, z: 0.0000000017397237, w: 0.99545753}
+  m_LocalRotation: {x: 0.09520663, y: 0.000000016609421, z: -0.0000000015885432, w: 0.99545753}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1904,6 +1904,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1511071082952753824, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
+      propertyPath: attraction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1511071082952753851, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
       propertyPath: m_Name
       value: ThirdPersonPlayer
@@ -1959,7 +1963,7 @@ PrefabInstance:
     - target: {fileID: 1511071082952753853, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
       propertyPath: rabbit
       value: 
-      objectReference: {fileID: 5418388775379972807, guid: d96f68ee9d5e8b04a8645d5041cb4d5d, type: 3}
+      objectReference: {fileID: 6428175815594929837, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
     - target: {fileID: 1511071082952753855, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
       propertyPath: lion
       value: 

@@ -76,13 +76,12 @@ public class RabbitMove : MonoBehaviour
         else if (theLogic.attraction > 50 && theLogic.hunger > 50 && theLogic.thirst > 50)
         {
             FindMate();
-            //Debug.Log("here");
         }
         else
         {
             IdleMotion();
         }
-        
+
     }
 
     void FindGrass()
@@ -232,11 +231,13 @@ public class RabbitMove : MonoBehaviour
 
     void FindMate()
     {
+
         //Debug.Log("Here");
-        Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 15);
+        Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 10);
         foreach (var detected in rabbitCanSee)
         {
             var mate = detected.gameObject.GetComponent<RabbitLogic>();
+            var theLogic1 = detected.gameObject.GetComponent<RabbitMove>();
             if (detected.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender && !lookingForMate)
             {
                 lookingForMate = true;
@@ -285,18 +286,25 @@ public class RabbitMove : MonoBehaviour
         foreach (var objectC in objectsCollided)
         {
             var mate = objectC.gameObject.GetComponent<RabbitLogic>();
+            var theLogic1 = objectC.gameObject.GetComponent<RabbitMove>();
+
             if (objectC.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender)
             {
                 //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
                 //WaitForSeconds(1);
-                Vector3 position = transform.position;
-                GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x, 0.432f, position.y), Quaternion.identity) as GameObject;
+                Vector3 yeet = transform.position;
+                GameObject newRabbit = Instantiate(rabbit, new Vector3(yeet.x, 0.2f, yeet.z), Quaternion.identity) as GameObject;
+                var newRab = newRabbit.GetComponent<RabbitLogic>();
+                newRab.attraction = 0;
+                newRab.hunger = 100;
+                newRab.thirst = 100;
+
                 theLogic.attraction = 0;
-                //mate.attraction = 0;
+                mate.attraction = 0;
                 lookingForMate = false;
-                Debug.Log("here");
+                theLogic1.lookingForMate = false;
                 closestRabbit = int.MaxValue;
-                
+
             }
         }
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -596,8 +596,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1094044057171259919, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
+      propertyPath: gender
+      value: female
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094044057171259919, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
       propertyPath: attraction
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6428175815594929837, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
       propertyPath: m_Name
@@ -808,12 +812,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1094044057171259919, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
+      propertyPath: gender
+      value: male
+      objectReference: {fileID: 0}
+    - target: {fileID: 1094044057171259919, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
       propertyPath: hunger
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1094044057171259919, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
       propertyPath: attraction
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6428175815594929837, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
       propertyPath: m_Name
