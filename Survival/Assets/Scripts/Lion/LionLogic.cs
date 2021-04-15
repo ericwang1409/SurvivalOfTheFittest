@@ -79,7 +79,7 @@ public class LionLogic : MonoBehaviour
     {
         if (hunger > 0)
         {
-            hunger -= 4;
+            hunger -= 1;
         }
         if (thirst > 0)
         {

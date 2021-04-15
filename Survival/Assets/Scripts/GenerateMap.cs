@@ -64,7 +64,7 @@ public class GenerateMap : MonoBehaviour
             Instantiate(rock3, new Vector3(position.x, .339f, position.y), Quaternion.Euler(-90, 0, 0));
         }
 
-        /*StartCoroutine(AddGrass());*/
+        StartCoroutine(AddGrass());
     }
 
     // Update is called once per frame

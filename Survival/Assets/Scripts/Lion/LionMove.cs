@@ -268,11 +268,11 @@ public class LionMove : MonoBehaviour
         float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
 
         //Eurlerangles is the angle. Make the movements gradual 
-        transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
+        transform.eulerAngles = Vector3.Slerp(new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z), targetRotation, Time.deltaTime * directionChangeInterval);
         //vecto forward value is 0, 0, 1
         var forward = transform.TransformDirection(Vector3.forward);
         //Vector value 0, 1, 0
-        Vector3 up = transform.TransformDirection(Vector3.up);
+        Vector3 up  = transform.TransformDirection(Vector3.up);
 
         //If contacted with the floor
         if (controller.isGrounded && !jumped)
