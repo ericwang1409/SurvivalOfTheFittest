@@ -124,6 +124,7 @@ public class RabbitMove : MonoBehaviour
                 playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
                 StartCoroutine(DelayJump());
                 jumped = true;
+                Debug.Log(playerVelocity.y);
             }
             else if (!controller.isGrounded)
             {
@@ -261,7 +262,9 @@ public class RabbitMove : MonoBehaviour
             Vector3 goToRabbit = rabbitPosition - transform.position;
             goToRabbit = goToRabbit.normalized;
 
-            controller.Move(goToRabbit * Time.deltaTime);
+            controller.Move(new Vector3 (goToRabbit.x, -1, goToRabbit.z) * Time.deltaTime);
+
+            Debug.Log(controller.isGrounded);
 
             //If contacted with the floor
             if (controller.isGrounded && !jumped)
@@ -269,11 +272,14 @@ public class RabbitMove : MonoBehaviour
                 playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
                 StartCoroutine(DelayJump());
                 jumped = true;
+                
             }
             else if (!controller.isGrounded)
             {
                 //playerVelocity.y += -9.81f * Time.deltaTime;
                 controller.Move(Vector3.down * 3 * Time.deltaTime);
+                Debug.Log(controller.isGrounded);
+
             }
 
             //Does not update very frame
@@ -380,7 +386,6 @@ public class RabbitMove : MonoBehaviour
 
         yield return new WaitForSeconds(.3f);
         jumped = false;
-        //Debug.Log("here");
 
     }
 }
