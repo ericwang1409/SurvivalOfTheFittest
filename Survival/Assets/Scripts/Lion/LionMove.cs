@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class LionMove : MonoBehaviour
 {
-    
+
     public GameObject lion;
     public GameObject poacher;
     public int lionSpeed = 13;
