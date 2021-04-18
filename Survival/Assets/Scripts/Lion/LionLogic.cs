@@ -10,7 +10,7 @@ public class LionLogic : MonoBehaviour
 
     public string gender;
     public static int sphereRadius = 1;
-    public static int wsphereRadius = 3;
+    public static float wsphereRadius = 1.5f;
 
     public static int tsphereRadius = 1;
 
@@ -45,11 +45,11 @@ public class LionLogic : MonoBehaviour
         //Debug.Log(hunger);
         if (hunger < 40)
         {
-            movement.lionSpeed = 6;
+            movement.lionSpeed = 10;
         }
         else
         {
-            movement.lionSpeed = 10;
+            movement.lionSpeed = 15;
         }
         if (hunger <= 0)
         {
@@ -62,11 +62,11 @@ public class LionLogic : MonoBehaviour
         }
         if (thirst < 40)
         {
-            movement.lionSpeed = 6;
+            movement.lionSpeed = 10;
         }
         else
         {
-            movement.lionSpeed = 10;
+            movement.lionSpeed = 15;
         }
         if (thirst <= 0)
         {

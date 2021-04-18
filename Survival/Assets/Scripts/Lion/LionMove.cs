@@ -45,6 +45,10 @@ public class LionMove : MonoBehaviour
     GameObject rabbit;
     GameObject pond;
 
+    float closestLion;
+    GameObject lionDetect;
+    Vector3 lionPosition;
+
     // Start is called before the first frame update. Each rabbit has the script so it runs for each one
     void Awake()
     {
@@ -189,9 +193,9 @@ public class LionMove : MonoBehaviour
             //goToGrass = transform.TransformDirection(goToGrass);
             controller.Move(goToPond * Time.deltaTime);
             //Debug.Log(Time.deltaTime);
-            Debug.Log("Rabbit location: " + transform.position);
-            Debug.Log("Grass location: " + rabbitPosition);
-            Debug.Log("Moving vector: " + goToPond);
+            // Debug.Log("Rabbit location: " + transform.position);
+            // Debug.Log("Grass location: " + rabbitPosition);
+            // Debug.Log("Moving vector: " + goToPond);
 
             //If contacted with the floor
             if (controller.isGrounded && !jumped)
@@ -227,40 +231,95 @@ public class LionMove : MonoBehaviour
 
     }
 
-    /*void FindMate()
+    void FindMate()
     {
-        //if (Physics.CheckSphere(transform.position, sphereRadius))
-        Collider[] canSee = Physics.OverlapSphere(transform.position, 10);
-        foreach (var detected in canSee)
+
+        //Debug.Log("Here");
+        Collider[] lionCanSee = Physics.OverlapSphere(transform.position, 10);
+        foreach (var detected in lionCanSee)
         {
-            var mate = detected.gameObject.GetComponent<RabbitLogic>();
-            if (detected.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender)
+            var mate = detected.gameObject.GetComponent<LionLogic>();
+            var theLogic1 = detected.gameObject.GetComponent<LionMove>();
+            if (detected.gameObject.tag == "lion" && mate.attraction > 50 && mate.gender != theLogic.gender && !lookingForMate)
             {
-                Vector3 goToGrass = Vector3.MoveTowards(transform.position, detected.transform.position, rabbitSpeed * Time.deltaTime);
-                controller.Move(goToGrass * Time.deltaTime);
+                lookingForMate = true;
+                if (Vector3.Distance(detected.transform.position, transform.position) < closestRabbit)
+                {
+                    closestLion = Vector3.Distance(lionPosition, transform.position);
+                    lionDetect = detected.gameObject;
+                    lionPosition = detected.transform.position;
+                }
             }
-            else
+        }
+
+        if (!lookingForMate)
+        {
+            IdleMotion();
+        }
+
+        if (lookingForMate && lionDetect.GetComponent<LionLogic>().attraction > 50)
+        {
+            transform.LookAt(lionDetect.transform);
+            Vector3 goToLion = lionPosition - transform.position;
+            goToLion = goToLion.normalized;
+
+            controller.Move(new Vector3 (goToLion.x, -1, goToLion.z) * Time.deltaTime);
+
+            // Debug.Log(controller.isGrounded);
+
+            //If contacted with the floor
+            if (controller.isGrounded && !jumped)
             {
-                IdleMotion();
+                playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
+                StartCoroutine(DelayJump());
+                jumped = true;
+                
             }
+            else if (!controller.isGrounded)
+            {
+                //playerVelocity.y += -9.81f * Time.deltaTime;
+                controller.Move(Vector3.down * 3 * Time.deltaTime);
+                // Debug.Log(controller.isGrounded);
+
+            }
+
+            //Does not update very frame
+            playerVelocity.y += -9.81f * Time.deltaTime;
+
+            controller.Move(playerVelocity * Time.deltaTime);
+        }
+        else if (lionDetect.GetComponent<LionLogic>().attraction <= 50)
+        {
+            lookingForMate = false;
+            closestLion = int.MaxValue;
         }
 
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);
         foreach (var objectC in objectsCollided)
         {
-            var mate = objectC.gameObject.GetComponent<RabbitLogic>();
-            if (objectC.gameObject.tag == "rabbit" && mate.attraction > 50 && mate.gender != theLogic.gender)
+            var mate = objectC.gameObject.GetComponent<LionLogic>();
+            var theLogic1 = objectC.gameObject.GetComponent<LionMove>();
+
+            if (objectC.gameObject.tag == "lion" && mate.attraction > 50 && mate.gender != theLogic.gender)
             {
                 //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
                 //WaitForSeconds(1);
-                Vector3 position = objectC.gameObject.transform.position;
-                GameObject newRabbit = Instantiate(rabbit, new Vector3(position.x, 0.432f, position.y), Quaternion.identity) as GameObject;
+                Vector3 yeet = transform.position;
+                GameObject newLion = Instantiate(lion, new Vector3(yeet.x, 0.2f, yeet.z), Quaternion.identity) as GameObject;
+                var newLionTwo = newLion.GetComponent<LionLogic>();
+                newLionTwo.attraction = 0;
+                newLionTwo.hunger = 100;
+                newLionTwo.thirst = 100;
+
                 theLogic.attraction = 0;
                 mate.attraction = 0;
+                lookingForMate = false;
+                theLogic1.lookingForMate = false;
+                closestLion = int.MaxValue;
+
             }
         }
-        //Debug.Log("Hunger:" + hunger);
-    }*/
+    }
 
     void IdleMotion()
     {

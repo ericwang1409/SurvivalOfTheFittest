@@ -2,18 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public class GlobalVars : MonoBehaviour
-{
-    public int rabbitSpeed = 10;
-}*/
-
 public class RabbitMove : MonoBehaviour
 {
     public GameObject rabbit;
     public GameObject lion;
     public GameObject poacher;
-    public int rabbitSpeed = 10;
-    //public static float rabbitSpeed = 1;
+    public int rabbitSpeed = 20;
+
     //Changing direction
     private float directionChangeInterval = 1;
     //Angle change
@@ -69,7 +64,7 @@ public class RabbitMove : MonoBehaviour
         {
             FindGrass();
         }
-        else if (theLogic.thirst < 50 && theLogic.thirst < theLogic.hunger)
+        else if (theLogic.thirst < 50 && theLogic.thirst <= theLogic.hunger)
         {
             FindWater();
         }
@@ -124,7 +119,7 @@ public class RabbitMove : MonoBehaviour
                 playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
                 StartCoroutine(DelayJump());
                 jumped = true;
-                Debug.Log(playerVelocity.y);
+                //Debug.Log(playerVelocity.y);
             }
             else if (!controller.isGrounded)
             {
@@ -192,9 +187,9 @@ public class RabbitMove : MonoBehaviour
             //goToGrass = transform.TransformDirection(goToGrass);
             controller.Move(goToPond * Time.deltaTime);
             //Debug.Log(Time.deltaTime);
-            Debug.Log("Rabbit location: " + transform.position);
-            Debug.Log("Grass location: " + grassPosition);
-            Debug.Log("Moving vector: " + goToPond);
+            // Debug.Log("Rabbit location: " + transform.position);
+            // Debug.Log("Grass location: " + grassPosition);
+            // Debug.Log("Moving vector: " + goToPond);
 
             //If contacted with the floor
             if (controller.isGrounded && !jumped)
@@ -256,15 +251,13 @@ public class RabbitMove : MonoBehaviour
             IdleMotion();
         }
 
-        if (lookingForMate)
+        if (lookingForMate && rabbitDetect.GetComponent<RabbitLogic>().attraction > 50)
         {
             transform.LookAt(rabbitDetect.transform);
             Vector3 goToRabbit = rabbitPosition - transform.position;
             goToRabbit = goToRabbit.normalized;
 
             controller.Move(new Vector3 (goToRabbit.x, -1, goToRabbit.z) * Time.deltaTime);
-
-            Debug.Log(controller.isGrounded);
 
             //If contacted with the floor
             if (controller.isGrounded && !jumped)
@@ -278,14 +271,17 @@ public class RabbitMove : MonoBehaviour
             {
                 //playerVelocity.y += -9.81f * Time.deltaTime;
                 controller.Move(Vector3.down * 3 * Time.deltaTime);
-                Debug.Log(controller.isGrounded);
-
             }
 
             //Does not update very frame
             playerVelocity.y += -9.81f * Time.deltaTime;
 
             controller.Move(playerVelocity * Time.deltaTime);
+        }
+        else if (lookingForMate && rabbitDetect.GetComponent<RabbitLogic>().attraction <= 50)
+        {
+            lookingForMate = false;
+            closestRabbit = int.MaxValue;
         }
 
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.sphereRadius);

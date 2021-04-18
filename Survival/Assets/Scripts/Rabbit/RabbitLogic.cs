@@ -6,11 +6,11 @@ public class RabbitLogic : MonoBehaviour
 {
     public int hunger = 100;
     public int thirst = 100;
-    public int attraction = 0;
+    public int attraction = 30;
 
     public string gender;
     public static int sphereRadius = 1;
-    public static int wsphereRadius = 3;
+    public static float wsphereRadius = 1f;
 
     public static int tsphereRadius = 1;
 
@@ -45,11 +45,11 @@ public class RabbitLogic : MonoBehaviour
         //Debug.Log(hunger);
         if (hunger < 40)
         {
-            movement.rabbitSpeed = 6;
+            movement.rabbitSpeed = 10;
         }
         else
         {
-            movement.rabbitSpeed = 10;
+            movement.rabbitSpeed = 15;
         }
         if (hunger <= 0)
         {
@@ -62,11 +62,11 @@ public class RabbitLogic : MonoBehaviour
         }
         if (thirst < 40)
         {
-            movement.rabbitSpeed = 6;
+            movement.rabbitSpeed = 10;
         }
         else
         {
-            movement.rabbitSpeed = 10;
+            movement.rabbitSpeed = 15;
         }
         if (thirst <= 0)
         {
@@ -79,13 +79,13 @@ public class RabbitLogic : MonoBehaviour
     {
         if (hunger > 0)
         {
-            hunger -= 1;
+            hunger -= 2;
         }
         if (thirst > 0)
         {
-            thirst -= 1;
+            thirst -= 2;
         }
-        attraction += 1;
+        attraction += 2;
     }
 
     IEnumerator dyingAnimation()
