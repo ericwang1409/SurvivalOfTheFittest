@@ -9,6 +9,8 @@ public class ScreenStatistics : MonoBehaviour
 
     private GameObject[] rabbits;
 
+    public static float time;
+
     Text population;
 
     // Start is called before the first frame update
@@ -20,7 +22,7 @@ public class ScreenStatistics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        time += Time.deltaTime;
         population.text = "Rabbit population: " + AddAnimals.worldRabbit;
     }
 }

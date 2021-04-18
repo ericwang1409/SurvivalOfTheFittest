@@ -70,8 +70,7 @@ public class RabbitLogic : MonoBehaviour
         }
         if (thirst <= 0)
         {
-            Destroy(gameObject);
-            AddAnimals.worldRabbit--;
+            StartCoroutine(dyingAnimation());
         }
     }
 

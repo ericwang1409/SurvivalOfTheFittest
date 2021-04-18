@@ -16,7 +16,7 @@ public class SceneNavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        endGame();
     }
 
     public void loadGame()
@@ -32,5 +32,13 @@ public class SceneNavigation : MonoBehaviour
     public void exitGame()
     {
         Application.Quit();
+    }
+
+    public void endGame()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene("EndScreen");
+        }
     }
 }

@@ -306,6 +306,7 @@ public class LionMove : MonoBehaviour
                 //WaitForSeconds(1);
                 Vector3 yeet = transform.position;
                 GameObject newLion = Instantiate(lion, new Vector3(yeet.x, 0.2f, yeet.z), Quaternion.identity) as GameObject;
+                AddAnimals.worldLion--;
                 var newLionTwo = newLion.GetComponent<LionLogic>();
                 newLionTwo.attraction = 0;
                 newLionTwo.hunger = 100;

@@ -70,8 +70,7 @@ public class LionLogic : MonoBehaviour
         }
         if (thirst <= 0)
         {
-            Destroy(gameObject);
-            AddAnimals.worldRabbit--;
+            StartCoroutine(dyingAnimation());
         }
     }
 
@@ -79,13 +78,13 @@ public class LionLogic : MonoBehaviour
     {
         if (hunger > 0)
         {
-            hunger -= 1;
+            hunger -= 2;
         }
         if (thirst > 0)
         {
-            thirst -= 1;
+            thirst -= 2;
         }
-        attraction += 1;
+        attraction += 2;
     }
 
     IEnumerator dyingAnimation()
