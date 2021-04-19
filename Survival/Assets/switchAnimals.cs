@@ -11,18 +11,22 @@ public class switchAnimals : MonoBehaviour
     GameObject closestLion;
     float closestLionDist = int.MaxValue;
 
-    public GameObject thirdPersonCamera;
+    GameObject thirdPersonCamera;
+
+    bool switching = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        thirdPersonCamera = GameObject.FindGameObjectWithTag("thirdCamera");
+
+        if (Input.GetKeyDown(KeyCode.P) && gameObject.GetComponent<ThirdPersonController>().enabled)
         {
             switchRabbit();
         }
@@ -34,26 +38,42 @@ public class switchAnimals : MonoBehaviour
 
     void switchRabbit()
     {
+        Debug.Log("method");
         
-        gameObject.GetComponent<ThirdPersonController>().enabled = false;
-        gameObject.GetComponent<RabbitMove>().enabled = true;
         Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 10);
+
         foreach (var detected in rabbitCanSee)
         {
-            if (detected.CompareTag("rabbit"))
+            Debug.Log("for");
+            Debug.Log(detected.gameObject.Equals(gameObject));
+            if (detected.CompareTag("rabbit") && !detected.gameObject.Equals(gameObject))
             {
+                Debug.Log("here");
                 float dist = Vector3.Distance(transform.position, detected.transform.position);
                 if (dist < closestRabbitDist)
                 {
                     closestRabbitDist = dist;
                     closestRabbit = detected.gameObject;
+                    Debug.Log(closestRabbit);
+                    switching = true;
                 }
             }
         }
-        closestRabbit.GetComponent<ThirdPersonController>().enabled = true;
-        closestRabbit.GetComponent<RabbitMove>().enabled = false;
-        thirdPersonCamera.GetComponent<CinemachineFreeLook>().Follow = closestRabbit.transform;
-        thirdPersonCamera.GetComponent<CinemachineFreeLook>().LookAt = closestRabbit.transform; 
+        if (switching)
+        {
+            gameObject.GetComponent<ThirdPersonController>().enabled = false;
+            gameObject.GetComponent<RabbitMove>().enabled = true;
+            Debug.Log(gameObject);
+            Debug.Log(closestRabbit);
+            closestRabbit.GetComponent<ThirdPersonController>().enabled = true;
+            closestRabbit.GetComponent<RabbitMove>().enabled = false;
+            closestRabbit.GetComponent<switchAnimals>().enabled = true;
+            thirdPersonCamera.GetComponent<CinemachineFreeLook>().Follow = closestRabbit.transform;
+            thirdPersonCamera.GetComponent<CinemachineFreeLook>().LookAt = closestRabbit.transform;
+            gameObject.GetComponent<switchAnimals>().enabled = false;
+            switching = false;
+        }
+
     }
 
     void switchLion()

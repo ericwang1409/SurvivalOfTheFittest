@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThirdPersonController : MonoBehaviour
 {
     private CharacterController controller;
-    public Camera cam;
+    Camera cam;
 
     private bool hello = true;
 
@@ -27,6 +27,7 @@ public class ThirdPersonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         thirdPersonLogic = gameObject.GetComponent<RabbitLogic>();
         //get character controller
         controller = GetComponent<CharacterController>();
