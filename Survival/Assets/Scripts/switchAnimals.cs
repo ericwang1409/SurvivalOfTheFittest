@@ -40,7 +40,7 @@ public class switchAnimals : MonoBehaviour
     void switchRabbit()
     {
         Debug.Log("method");
-        
+
         Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 10);
 
         foreach (var detected in rabbitCanSee)
@@ -63,7 +63,16 @@ public class switchAnimals : MonoBehaviour
         if (rabbitSwitching)
         {
             gameObject.GetComponent<ThirdPersonController>().enabled = false;
-            gameObject.GetComponent<RabbitMove>().enabled = true;
+            if (gameObject.CompareTag("lion"))
+            {
+                gameObject.GetComponent<LionMove>().enabled = true;
+
+            }
+            if (gameObject.CompareTag("rabbit"))
+            {
+                gameObject.GetComponent<RabbitMove>().enabled = true;
+
+            }
             Debug.Log(gameObject);
             Debug.Log(closestRabbit);
             closestRabbit.GetComponent<ThirdPersonController>().enabled = true;
@@ -80,7 +89,7 @@ public class switchAnimals : MonoBehaviour
     void switchLion()
     {
         Debug.Log("method");
-        
+
         Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 10);
 
         foreach (var detected in rabbitCanSee)
@@ -103,7 +112,16 @@ public class switchAnimals : MonoBehaviour
         if (lionSwitching)
         {
             gameObject.GetComponent<ThirdPersonController>().enabled = false;
-            gameObject.GetComponent<LionMove>().enabled = true;
+            if (gameObject.CompareTag("lion"))
+            {
+                gameObject.GetComponent<LionMove>().enabled = true;
+
+            }
+            if (gameObject.CompareTag("rabbit"))
+            {
+                gameObject.GetComponent<RabbitMove>().enabled = true;
+
+            }
             Debug.Log(gameObject);
             Debug.Log(closestLion);
             closestLion.GetComponent<ThirdPersonController>().enabled = true;

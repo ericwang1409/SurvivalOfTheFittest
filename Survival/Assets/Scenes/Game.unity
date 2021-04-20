@@ -962,7 +962,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 777853377}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1852688218}
+        m_TargetAssemblyTypeName: SceneNavigation, Assembly-CSharp
+        m_MethodName: endGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &777853377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1280,7 +1292,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141027998}
-  m_LocalRotation: {x: 0.14220114, y: 0.000000017034445, z: -0.0000000024471862, w: 0.9898378}
+  m_LocalRotation: {x: 0.14220114, y: -0.000000017031526, z: 0.0000000024467672, w: 0.9898378}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1558,7 +1570,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319323937}
-  m_LocalRotation: {x: 0.14220117, y: 0.000000034064506, z: -0.0000000048937436, w: 0.98983777}
+  m_LocalRotation: {x: 0.14220117, y: -0.000000034063053, z: 0.0000000048935354, w: 0.98983777}
   m_LocalPosition: {x: -6.095805, y: 1.7160001, z: -32.367397}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1757,7 +1769,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356292626}
-  m_LocalRotation: {x: 0.16018224, y: 0.00000001640133, z: -0.0000000026615694, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018224, y: -0.000000016984202, z: 0.0000000027561569, w: 0.9870875}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1831,7 +1843,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362715754}
-  m_LocalRotation: {x: 0.124220625, y: 0.000000017608347, z: -0.0000000022043936, w: 0.9922547}
+  m_LocalRotation: {x: 0.124220625, y: -0.000000017598554, z: 0.0000000022031676, w: 0.9922547}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2540,6 +2552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f68ed4663726e549cbcafce4c4b1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 1012295812}
 --- !u!114 &1852688218
 MonoBehaviour:
   m_ObjectHideFlags: 0

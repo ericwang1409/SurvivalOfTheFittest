@@ -33,8 +33,6 @@ public class ThirdPersonController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         AddAnimals.worldRabbit++;
         //InvokeRepeating("decreaseHunger", 1.0f, 1.0f);
-
-
     }
 
     // Update is called once per frame
@@ -93,7 +91,7 @@ public class ThirdPersonController : MonoBehaviour
             //    Debug.Log(mate.attraction);
             //    Debug.Log(thirdPersonLogic.gender);
             // }
-            if (objectC.gameObject.tag == "rabbit" && mate.attraction > 50 && thirdPersonLogic.attraction > 50 && mate.gender != thirdPersonLogic.gender)
+            if (objectC.gameObject.tag == gameObject.tag && mate.attraction > 50 && thirdPersonLogic.attraction > 50 && mate.gender != thirdPersonLogic.gender)
             {
                 //Debug.Log("Here");
                 Vector3 yeet = transform.position;

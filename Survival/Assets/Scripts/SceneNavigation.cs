@@ -10,13 +10,13 @@ public class SceneNavigation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        endGame();
+        
     }
 
     public void loadGame()
@@ -38,9 +38,11 @@ public class SceneNavigation : MonoBehaviour
 
     public void endGame()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SceneManager.LoadScene("EndScreen");
-        }
+        SceneManager.LoadScene("EndScreen");
+    }
+
+    public void playAgain()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 }
