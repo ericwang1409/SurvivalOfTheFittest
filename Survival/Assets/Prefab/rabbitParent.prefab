@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1094044057171259905}
   - component: {fileID: 1094044057171259906}
   - component: {fileID: 1094044057171259919}
+  - component: {fileID: 2144123286894090925}
+  - component: {fileID: 2407882071920523918}
   m_Layer: 0
   m_Name: rabbitParent
   m_TagString: rabbit
@@ -86,6 +88,33 @@ MonoBehaviour:
   gender: 
   rabbitAnimate: {fileID: 8096999768527723650}
   dying: 0
+--- !u!114 &2144123286894090925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428175815594929837}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b45e6f20bb90842867270c145745f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 2766436532779066947, guid: beb122860fe6cd3b1b9de6359983afd2, type: 3}
+  rabbit: {fileID: 6428175815594929837}
+--- !u!114 &2407882071920523918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428175815594929837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae924c4c7a07e9ff914f240f0c19c88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thirdPersonCamera: {fileID: 5837782832622292658, guid: 6ad58d5a8f03e335dabe694d8b081328, type: 3}
 --- !u!1001 &4313623878385887104
 PrefabInstance:
   m_ObjectHideFlags: 0

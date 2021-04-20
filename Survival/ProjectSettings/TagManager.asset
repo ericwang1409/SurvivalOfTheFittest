@@ -7,6 +7,7 @@ TagManager:
   - grass
   - water
   - rabbit
+  - thirdCamera
   layers:
   - Default
   - TransparentFX
