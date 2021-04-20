@@ -41,4 +41,9 @@ public class SceneNavigation : MonoBehaviour
             SceneManager.LoadScene("EndScreen");
         }
     }
+
+    public void backToMainMenu()
+    {
+        SceneManager.LoadScene("TitleScreen");
+    }
 }
