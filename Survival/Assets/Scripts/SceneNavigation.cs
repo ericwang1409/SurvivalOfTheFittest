@@ -24,10 +24,12 @@ public class SceneNavigation : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    /*
     public void howToPlay()
     {
         SceneManager.LoadScene("HowToPlay");
     }
+    */
 
     public void exitGame()
     {
