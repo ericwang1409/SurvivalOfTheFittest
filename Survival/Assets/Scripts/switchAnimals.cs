@@ -13,7 +13,8 @@ public class switchAnimals : MonoBehaviour
 
     GameObject thirdPersonCamera;
 
-    bool switching = false;
+    bool rabbitSwitching = false;
+    bool lionSwitching = false;
 
     // Start is called before the first frame update
     void Start()
@@ -55,11 +56,11 @@ public class switchAnimals : MonoBehaviour
                     closestRabbitDist = dist;
                     closestRabbit = detected.gameObject;
                     Debug.Log(closestRabbit);
-                    switching = true;
+                    rabbitSwitching = true;
                 }
             }
         }
-        if (switching)
+        if (rabbitSwitching)
         {
             gameObject.GetComponent<ThirdPersonController>().enabled = false;
             gameObject.GetComponent<RabbitMove>().enabled = true;
@@ -71,13 +72,47 @@ public class switchAnimals : MonoBehaviour
             thirdPersonCamera.GetComponent<CinemachineFreeLook>().Follow = closestRabbit.transform;
             thirdPersonCamera.GetComponent<CinemachineFreeLook>().LookAt = closestRabbit.transform;
             gameObject.GetComponent<switchAnimals>().enabled = false;
-            switching = false;
+            rabbitSwitching = false;
         }
 
     }
 
     void switchLion()
     {
+        Debug.Log("method");
+        
+        Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 10);
 
+        foreach (var detected in rabbitCanSee)
+        {
+            Debug.Log("for");
+            Debug.Log(detected.gameObject.Equals(gameObject));
+            if (detected.CompareTag("lion") && !detected.gameObject.Equals(gameObject))
+            {
+                Debug.Log("here");
+                float dist = Vector3.Distance(transform.position, detected.transform.position);
+                if (dist < closestLionDist)
+                {
+                    closestLionDist = dist;
+                    closestLion = detected.gameObject;
+                    Debug.Log(closestLion);
+                    lionSwitching = true;
+                }
+            }
+        }
+        if (lionSwitching)
+        {
+            gameObject.GetComponent<ThirdPersonController>().enabled = false;
+            gameObject.GetComponent<LionMove>().enabled = true;
+            Debug.Log(gameObject);
+            Debug.Log(closestLion);
+            closestLion.GetComponent<ThirdPersonController>().enabled = true;
+            closestLion.GetComponent<LionMove>().enabled = false;
+            closestLion.GetComponent<switchAnimals>().enabled = true;
+            thirdPersonCamera.GetComponent<CinemachineFreeLook>().Follow = closestLion.transform;
+            thirdPersonCamera.GetComponent<CinemachineFreeLook>().LookAt = closestLion.transform;
+            gameObject.GetComponent<switchAnimals>().enabled = false;
+            lionSwitching = false;
+        }
     }
 }
