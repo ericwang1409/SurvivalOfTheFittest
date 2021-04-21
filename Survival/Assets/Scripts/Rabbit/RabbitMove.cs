@@ -215,9 +215,8 @@ public class RabbitMove : MonoBehaviour
         {
             if (objectC.gameObject.tag == "water" && theLogic.hunger <= 50)
             {
-
-
                 theLogic.thirst += 50;
+
                 lookingForWater = false;
                 closestPond = int.MaxValue;
             }

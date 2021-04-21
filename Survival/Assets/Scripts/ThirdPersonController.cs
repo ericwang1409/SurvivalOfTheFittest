@@ -24,9 +24,13 @@ public class ThirdPersonController : MonoBehaviour
 
     RabbitLogic thirdPersonLogic;
 
+    AudioSource eating;
+    AudioSource drinking;
     // Start is called before the first frame update
     void Start()
     {
+        eating = GameObject.Find("Eat Sound Effect").GetComponent<AudioSource>();
+        drinking = GameObject.Find("Drink Sound Effect").GetComponent<AudioSource>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         thirdPersonLogic = gameObject.GetComponent<RabbitLogic>();
         //get character controller
@@ -57,6 +61,7 @@ public class ThirdPersonController : MonoBehaviour
                 Destroy(objectC.gameObject);
                 GenerateMap.numGrass--;
                 thirdPersonLogic.hunger += 50;
+                eating.Play();
                 //Debug.Log(RabbitLogic.hunger);
 
             }
@@ -71,7 +76,7 @@ public class ThirdPersonController : MonoBehaviour
         {
             if (objectC.gameObject.tag == "water" && thirdPersonLogic.thirst <= 50)
             {
-                
+                drinking.Play();
                 thirdPersonLogic.thirst += 50;
                 //Debug.Log(RabbitLogic.thirst);
             }
