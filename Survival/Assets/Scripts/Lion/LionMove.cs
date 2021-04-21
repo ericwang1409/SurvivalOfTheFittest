@@ -150,7 +150,7 @@ public class LionMove : MonoBehaviour
             if (objectC.gameObject.tag == "rabbit" && theLogic.hunger <= 50)
             {
                 Destroy(objectC.gameObject);
-                GenerateMap.numGrass--;
+                AddAnimals.worldRabbit--;
                 theLogic.hunger += 50;
                 lookingForRabbit = false;
                 closestRabbit = int.MaxValue;

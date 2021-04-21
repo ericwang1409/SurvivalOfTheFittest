@@ -39,14 +39,14 @@ public class switchAnimals : MonoBehaviour
 
     void switchRabbit()
     {
-        Debug.Log("method");
-        
+        //Debug.Log("method");
+
         Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 10);
 
         foreach (var detected in rabbitCanSee)
         {
-            Debug.Log("for");
-            Debug.Log(detected.gameObject.Equals(gameObject));
+            //Debug.Log("for");
+            //Debug.Log(detected.gameObject.Equals(gameObject));
             if (detected.CompareTag("rabbit") && !detected.gameObject.Equals(gameObject))
             {
                 Debug.Log("here");
@@ -55,7 +55,7 @@ public class switchAnimals : MonoBehaviour
                 {
                     closestRabbitDist = dist;
                     closestRabbit = detected.gameObject;
-                    Debug.Log(closestRabbit);
+                    //Debug.Log(closestRabbit);
                     rabbitSwitching = true;
                 }
             }
@@ -64,8 +64,8 @@ public class switchAnimals : MonoBehaviour
         {
             gameObject.GetComponent<ThirdPersonController>().enabled = false;
             gameObject.GetComponent<RabbitMove>().enabled = true;
-            Debug.Log(gameObject);
-            Debug.Log(closestRabbit);
+            //Debug.Log(gameObject);
+            //Debug.Log(closestRabbit);
             closestRabbit.GetComponent<ThirdPersonController>().enabled = true;
             closestRabbit.GetComponent<RabbitMove>().enabled = false;
             closestRabbit.GetComponent<switchAnimals>().enabled = true;
@@ -79,23 +79,23 @@ public class switchAnimals : MonoBehaviour
 
     void switchLion()
     {
-        Debug.Log("method");
-        
+        //Debug.Log("method");
+
         Collider[] rabbitCanSee = Physics.OverlapSphere(transform.position, 10);
 
         foreach (var detected in rabbitCanSee)
         {
-            Debug.Log("for");
-            Debug.Log(detected.gameObject.Equals(gameObject));
+            //Debug.Log("for");
+            //Debug.Log(detected.gameObject.Equals(gameObject));
             if (detected.CompareTag("lion") && !detected.gameObject.Equals(gameObject))
             {
-                Debug.Log("here");
+                //Debug.Log("here");
                 float dist = Vector3.Distance(transform.position, detected.transform.position);
                 if (dist < closestLionDist)
                 {
                     closestLionDist = dist;
                     closestLion = detected.gameObject;
-                    Debug.Log(closestLion);
+                    //Debug.Log(closestLion);
                     lionSwitching = true;
                 }
             }
@@ -104,8 +104,8 @@ public class switchAnimals : MonoBehaviour
         {
             gameObject.GetComponent<ThirdPersonController>().enabled = false;
             gameObject.GetComponent<LionMove>().enabled = true;
-            Debug.Log(gameObject);
-            Debug.Log(closestLion);
+            //Debug.Log(gameObject);
+            //Debug.Log(closestLion);
             closestLion.GetComponent<ThirdPersonController>().enabled = true;
             closestLion.GetComponent<LionMove>().enabled = false;
             closestLion.GetComponent<switchAnimals>().enabled = true;
