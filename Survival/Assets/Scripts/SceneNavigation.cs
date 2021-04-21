@@ -22,6 +22,9 @@ public class SceneNavigation : MonoBehaviour
     public void loadGame()
     {
         SceneManager.LoadScene("Game");
+        ScreenStatistics.time = 0;
+        AddAnimals.worldLion = 0;
+        AddAnimals.worldRabbit = 0;
     }
 
     /*
