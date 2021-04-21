@@ -63,9 +63,18 @@ public class switchAnimals : MonoBehaviour
         if (rabbitSwitching)
         {
             gameObject.GetComponent<ThirdPersonController>().enabled = false;
-            gameObject.GetComponent<RabbitMove>().enabled = true;
-            //Debug.Log(gameObject);
-            //Debug.Log(closestRabbit);
+            if (gameObject.CompareTag("lion"))
+            {
+                gameObject.GetComponent<LionMove>().enabled = true;
+
+            }
+            if (gameObject.CompareTag("rabbit"))
+            {
+                gameObject.GetComponent<RabbitMove>().enabled = true;
+
+            }
+            Debug.Log(gameObject);
+            Debug.Log(closestRabbit);
             closestRabbit.GetComponent<ThirdPersonController>().enabled = true;
             closestRabbit.GetComponent<RabbitMove>().enabled = false;
             closestRabbit.GetComponent<switchAnimals>().enabled = true;
@@ -103,9 +112,18 @@ public class switchAnimals : MonoBehaviour
         if (lionSwitching)
         {
             gameObject.GetComponent<ThirdPersonController>().enabled = false;
-            gameObject.GetComponent<LionMove>().enabled = true;
-            //Debug.Log(gameObject);
-            //Debug.Log(closestLion);
+            if (gameObject.CompareTag("lion"))
+            {
+                gameObject.GetComponent<LionMove>().enabled = true;
+
+            }
+            if (gameObject.CompareTag("rabbit"))
+            {
+                gameObject.GetComponent<RabbitMove>().enabled = true;
+
+            }
+            Debug.Log(gameObject);
+            Debug.Log(closestLion);
             closestLion.GetComponent<ThirdPersonController>().enabled = true;
             closestLion.GetComponent<LionMove>().enabled = false;
             closestLion.GetComponent<switchAnimals>().enabled = true;
