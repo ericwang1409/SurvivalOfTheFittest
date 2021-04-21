@@ -10,6 +10,7 @@ public class ThirdPersonController : MonoBehaviour
     private bool hello = true;
 
     public GameObject rabbit;
+    public GameObject lion;
     //private int hunger = 100;
     //private int thirst = 100;
 
@@ -23,6 +24,7 @@ public class ThirdPersonController : MonoBehaviour
     private bool jumped = false;
 
     RabbitLogic thirdPersonLogic;
+    LionLogic thirdPersonLogicLion;
 
     AudioSource eating;
     AudioSource drinking;
@@ -33,6 +35,7 @@ public class ThirdPersonController : MonoBehaviour
         drinking = GameObject.Find("Drink Sound Effect").GetComponent<AudioSource>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         thirdPersonLogic = gameObject.GetComponent<RabbitLogic>();
+        thirdPersonLogicLion = gameObject.GetComponent<LionLogic>();
         //get character controller
         controller = GetComponent<CharacterController>();
         AddAnimals.worldRabbit++;
@@ -45,7 +48,19 @@ public class ThirdPersonController : MonoBehaviour
         ThirdPersonMovement();
         FindGrass();
         FindWater();
-        FindMate();
+        if (gameObject.CompareTag("lion"))
+        {
+            FindLionMate();
+        }
+        else if (gameObject.CompareTag("rabbit"))
+        {
+            FindMate();
+        }
+    }
+
+    void FindRabbit()
+    {
+
     }
 
     void FindGrass()
@@ -101,6 +116,31 @@ public class ThirdPersonController : MonoBehaviour
                 //Debug.Log("Here");
                 Vector3 yeet = transform.position;
                 GameObject newRabbit = Instantiate(rabbit, new Vector3(yeet.x, 0.2f, yeet.z), Quaternion.identity) as GameObject;
+                thirdPersonLogic.attraction = 0;
+                mate.attraction = 0;
+                hello = false;
+            }
+        }
+    }
+
+    void FindLionMate()
+    {
+        //Debug.Log(thirdPersonLogic.attraction);
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, LionLogic.sphereRadius);
+        foreach (var objectC in objectsCollided)
+        {
+            //if (objectC.gameObject.tag == "rabbit")
+            //{
+            var mate = objectC.gameObject.GetComponent<LionLogic>();
+            //    Debug.Log(mate.gender);
+            //    Debug.Log(mate.attraction);
+            //    Debug.Log(thirdPersonLogic.gender);
+            // }
+            if (objectC.gameObject.tag == gameObject.tag && mate.attraction > 50 && thirdPersonLogicLion.attraction > 50 && mate.gender != thirdPersonLogicLion.gender)
+            {
+                //Debug.Log("Here");
+                Vector3 yeet = transform.position;
+                GameObject newRabbit = Instantiate(lion, new Vector3(yeet.x, 0.2f, yeet.z), Quaternion.identity) as GameObject;
                 thirdPersonLogic.attraction = 0;
                 mate.attraction = 0;
                 hello = false;

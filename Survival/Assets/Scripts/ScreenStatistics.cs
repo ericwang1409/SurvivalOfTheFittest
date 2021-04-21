@@ -23,7 +23,9 @@ public class ScreenStatistics : MonoBehaviour
     Slider thirstSlide;
     Text timeText;
 
-    RabbitLogic hungerThirstValues;
+    RabbitLogic rabbitHungerThirstValues;
+    LionLogic lionHungerThirstValues;
+
     public GameObject thirdPersonCamera;
     CinemachineFreeLook freeLookCamera;
 
@@ -40,19 +42,29 @@ public class ScreenStatistics : MonoBehaviour
         //gets the third person camera and uses the hunger and thirst values based on which gameobject the camera is looking at
         freeLookCamera = thirdPersonCamera.GetComponent<CinemachineFreeLook>();
 
-        hungerThirstValues = freeLookCamera.Follow.gameObject.GetComponent<RabbitLogic>();
+        rabbitHungerThirstValues = freeLookCamera.Follow.gameObject.GetComponent<RabbitLogic>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (freeLookCamera.Follow.gameObject.CompareTag("lion")) 
+        {
+            lionHungerThirstValues = freeLookCamera.Follow.gameObject.GetComponent<LionLogic>();
+            hungerSlide.value = lionHungerThirstValues.hunger / 100;
+            thirstSlide.value = lionHungerThirstValues.thirst / 100;
+        }
+        else if (freeLookCamera.Follow.gameObject.CompareTag("rabbit"))
+        {
+            rabbitHungerThirstValues = freeLookCamera.Follow.gameObject.GetComponent<RabbitLogic>();
+            hungerSlide.value = rabbitHungerThirstValues.hunger / 100;
+            thirstSlide.value = rabbitHungerThirstValues.thirst / 100;
+        }
 
         time += Time.deltaTime;
 
         populationRabbit.text = "Rabbits: " + AddAnimals.worldRabbit;
         populationLion.text = "Lions: " + AddAnimals.worldLion;
-        hungerSlide.value = hungerThirstValues.hunger/100;
-        thirstSlide.value = hungerThirstValues.thirst/100;
         timeText.text = "" + Mathf.Round(time * 100)/100;
 
         

@@ -9,10 +9,10 @@ using UnityEngine;
 
 public class LionMove : MonoBehaviour
 {
-
     public GameObject lion;
     public GameObject poacher;
     public int lionSpeed = 13;
+
     //public static float rabbitSpeed = 1;
     //Changing direction
     private float directionChangeInterval = 1;
