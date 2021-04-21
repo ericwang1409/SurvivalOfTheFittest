@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b45e6f20bb90842867270c145745f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rabbit: {fileID: 0}
+  rabbit: {fileID: 6428175815594929837, guid: 75a880c734967c74095f57b072f51ea4, type: 3}
+  lion: {fileID: 4541307864186971466}
 --- !u!114 &-874976699697022507
 MonoBehaviour:
   m_ObjectHideFlags: 0
