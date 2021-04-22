@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LionLogic : MonoBehaviour
 {
@@ -92,7 +93,11 @@ public class LionLogic : MonoBehaviour
         lionAnimate.SetBool("died", true);
         yield return new WaitForSeconds(0.65f);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        if (gameObject.GetComponent<ThirdPersonController>().enabled)
+        {
+            SceneManager.LoadScene("EndScreen");
+        }
         AddAnimals.worldLion--;
     }
 }

@@ -69,8 +69,24 @@ public class ScreenStatistics : MonoBehaviour
 
         time += Time.deltaTime;
 
-        populationRabbit.text = "Rabbits: " + AddAnimals.worldRabbit;
-        populationLion.text = "Lions: " + AddAnimals.worldLion;
+        if (AddAnimals.worldRabbit >= 0)
+        {
+            populationRabbit.text = "Rabbits: " + AddAnimals.worldRabbit;
+        }
+        else 
+        {
+            populationRabbit.text = "Rabbits: " + 0;
+        }
+
+        if (AddAnimals.worldLion >= 0)
+        {
+            populationLion.text = "Lions: " + AddAnimals.worldLion;
+        }
+        else
+        {
+            populationLion.text = "Lions: " + 0;
+        }
+        
         timeText.text = "" + Mathf.Round(time * 100)/100;
 
         

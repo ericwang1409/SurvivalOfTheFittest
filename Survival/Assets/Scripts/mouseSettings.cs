@@ -16,7 +16,7 @@ public class mouseSettings : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !pauseMenu.activeSelf)
         {
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
         if (Input.GetKeyDown(KeyCode.Escape))

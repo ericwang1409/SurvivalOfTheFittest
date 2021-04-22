@@ -64,7 +64,7 @@ public class AddAnimals : MonoBehaviour
         //add poacher
        // Debug.Log(poacherRampaging);
         //Debug.Log(poacherCount);
-        if (poacherRampaging && poacherCount >= 5 && poacherCounter < 1)
+        if (poacherRampaging && poacherCount >= 30 && poacherCounter < 1)
         {
             //Random position in 35 unit sphere. Always spawns from middle
             Vector3 position = Random.insideUnitSphere * 35;
