@@ -7,8 +7,6 @@ public class ThirdPersonController : MonoBehaviour
     private CharacterController controller;
     Camera cam;
 
-    private bool hello = true;
-
     public GameObject rabbit;
     public GameObject lion;
     //private int hunger = 100;
@@ -148,7 +146,6 @@ public class ThirdPersonController : MonoBehaviour
                 GameObject newRabbit = Instantiate(rabbit, new Vector3(yeet.x, 0.2f, yeet.z), Quaternion.identity) as GameObject;
                 thirdPersonLogic.attraction = 0;
                 mate.attraction = 0;
-                hello = false;
             }
         }
     }
@@ -173,7 +170,6 @@ public class ThirdPersonController : MonoBehaviour
                 GameObject newRabbit = Instantiate(lion, new Vector3(yeet.x, 0.2f, yeet.z), Quaternion.identity) as GameObject;
                 thirdPersonLogic.attraction = 0;
                 mate.attraction = 0;
-                hello = false;
             }
         }
     }
