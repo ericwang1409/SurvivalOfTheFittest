@@ -295,7 +295,7 @@ public class RabbitMove : MonoBehaviour
                 //WaitForSeconds(1);
                 Vector3 yeet = transform.position;
                 GameObject newRabbit = Instantiate(rabbit, new Vector3(yeet.x, 0.2f, yeet.z), Quaternion.identity) as GameObject;
-                AddAnimals.worldRabbit--;
+                AddAnimals.worldRabbit++;
                 var newRab = newRabbit.GetComponent<RabbitLogic>();
                 newRab.attraction = 0;
                 newRab.hunger = 100;
