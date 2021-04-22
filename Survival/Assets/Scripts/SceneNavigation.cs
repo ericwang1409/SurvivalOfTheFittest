@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
+using Cinemachine;
 
 public class SceneNavigation : MonoBehaviour
 {
+
+    public CinemachineFreeLook banana;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +19,11 @@ public class SceneNavigation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // if (AddAnimals.worldRabbit == 0)
+        // {
+        //     endGame();
+        // }
+
     }
 
     public void loadGame()

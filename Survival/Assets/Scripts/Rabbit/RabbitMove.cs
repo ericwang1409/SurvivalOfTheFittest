@@ -19,7 +19,7 @@ public class RabbitMove : MonoBehaviour
     float heading;
     Vector3 targetRotation;
 
-    private float radius = 35;
+    private float radius = 34;
 
     private Vector3 playerVelocity;
 

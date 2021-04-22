@@ -76,13 +76,13 @@ public class LionMove : MonoBehaviour
         {
             FindWater();
         }
+        else if (theLogic.attraction > 50 && theLogic.hunger > 50 && theLogic.thirst > 50)
+        {
+            FindMate();
+        }
         else
         {
             IdleMotion();
-        }
-        if (theLogic.attraction > 50)
-        {
-            FindMate();
         }
     }
 
@@ -288,7 +288,7 @@ public class LionMove : MonoBehaviour
 
             controller.Move(playerVelocity * Time.deltaTime);
         }
-        else if (lionDetect.GetComponent<LionLogic>().attraction <= 50)
+        else if (lookingForMate && lionDetect.GetComponent<LionLogic>().attraction <= 50)
         {
             lookingForMate = false;
             closestLion = int.MaxValue;

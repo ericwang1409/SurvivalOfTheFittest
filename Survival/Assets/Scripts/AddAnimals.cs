@@ -12,7 +12,7 @@ public class AddAnimals : MonoBehaviour
     private int poacherCounter = 0;
     private bool poacherRampaging = true;
 
-    private int poacherCount = 90;
+    private int poacherCount = 0;
     public int totalRabbit;
     public int totalLion;
     public int totalPoacher;
@@ -21,7 +21,7 @@ public class AddAnimals : MonoBehaviour
     public static int worldLion;
     public static int worldPoacher;
 
-
+    public GameObject poacherPopUp;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +64,7 @@ public class AddAnimals : MonoBehaviour
         //add poacher
        // Debug.Log(poacherRampaging);
         //Debug.Log(poacherCount);
-        if (poacherRampaging && poacherCount >= 100 && poacherCounter < 1)
+        if (poacherRampaging && poacherCount >= 5 && poacherCounter < 1)
         {
             //Random position in 35 unit sphere. Always spawns from middle
             Vector3 position = Random.insideUnitSphere * 35;
@@ -75,9 +75,11 @@ public class AddAnimals : MonoBehaviour
             poacherCounter++;
             worldPoacher++;
             //Debug.Log("here");
+            poacherPopUp.SetActive(true);
+            StartCoroutine(poacherMessage());
         }
 
-        if (poacherCount >= 160)
+        if (poacherCount >= 105)
         {
             poacherRampaging = false;
             poacherCounter--;
@@ -86,5 +88,12 @@ public class AddAnimals : MonoBehaviour
     void decreaseHunger()
     {
         poacherCount += 1;
+    }
+
+    IEnumerator poacherMessage()
+    {
+        
+        yield return new WaitForSeconds(1.5f);
+        poacherPopUp.SetActive(false);
     }
 }

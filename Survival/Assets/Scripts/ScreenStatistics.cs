@@ -51,14 +51,15 @@ public class ScreenStatistics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (freeLookCamera.Follow.gameObject.CompareTag("lion")) 
+        if (freeLookCamera.Follow.gameObject.CompareTag("lion") && freeLookCamera.Follow.gameObject != null) 
         {
             lionHungerThirstValues = freeLookCamera.Follow.gameObject.GetComponent<LionLogic>();
             hungerSlide.value = lionHungerThirstValues.hunger / 100;
             thirstSlide.value = lionHungerThirstValues.thirst / 100;
             attraction.value = lionHungerThirstValues.attraction / 100;
+            Debug.Log(lionHungerThirstValues.hunger);
         }
-        else if (freeLookCamera.Follow.gameObject.CompareTag("rabbit"))
+        else if (freeLookCamera.Follow.gameObject.CompareTag("rabbit") && freeLookCamera.Follow.gameObject != null)
         {
             rabbitHungerThirstValues = freeLookCamera.Follow.gameObject.GetComponent<RabbitLogic>();
             hungerSlide.value = rabbitHungerThirstValues.hunger / 100;

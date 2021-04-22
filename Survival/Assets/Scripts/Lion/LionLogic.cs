@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LionLogic : MonoBehaviour
 {
-    public int hunger = 100;
-    public int thirst = 100;
-    public int attraction = 0;
+    public float hunger = 100;
+    public float thirst = 100;
+    public float attraction = 0;
 
     public string gender;
     public static int sphereRadius = 1;

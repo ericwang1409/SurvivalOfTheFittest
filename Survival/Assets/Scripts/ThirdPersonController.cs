@@ -51,13 +51,14 @@ public class ThirdPersonController : MonoBehaviour
         if (gameObject.CompareTag("lion"))
         {
             FindLionMate();
-            FindWater();
+            FindRabbit();
         }
         else if (gameObject.CompareTag("rabbit"))
         {
             FindMate();
             FindGrass();
         }
+        FindWater();
         float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
         if (distance > radius)
         {

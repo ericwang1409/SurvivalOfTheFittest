@@ -3017,7 +3017,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141027998}
-  m_LocalRotation: {x: 0.14220114, y: -0.000000017031526, z: 0.0000000024467672, w: 0.9898378}
+  m_LocalRotation: {x: 0.14220114, y: 0.000000017031528, z: -0.0000000024467675, w: 0.9898378}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3370,7 +3370,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319323937}
-  m_LocalRotation: {x: 0.14220117, y: -0.000000034063053, z: 0.0000000048935354, w: 0.98983777}
+  m_LocalRotation: {x: 0.14220117, y: 0.000000034063053, z: -0.0000000048935354, w: 0.98983777}
   m_LocalPosition: {x: -6.095805, y: 1.7160001, z: -32.367397}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3569,7 +3569,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356292626}
-  m_LocalRotation: {x: 0.16018224, y: -0.000000016984202, z: 0.0000000027561569, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018224, y: 0.000000016984204, z: -0.000000002756157, w: 0.9870875}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4688,6 +4688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a132646c4c54b3ceead9140b42b3e97d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  banana: {fileID: 936077893}
 --- !u!82 &1852688220
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5271,6 +5272,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2990184982722158, guid: db35cefbcc718c44f81a437fe306000b, type: 3}
+      propertyPath: poacherPopUp
+      value: 
+      objectReference: {fileID: 385946048}
     - target: {fileID: 2990184982722159, guid: db35cefbcc718c44f81a437fe306000b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5324,6 +5329,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1511071082952753824, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
+      propertyPath: thirst
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1511071082952753824, guid: 1138009ecc864ba4985f9910d5f5535c, type: 3}
       propertyPath: attraction
       value: 0
