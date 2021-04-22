@@ -24,7 +24,7 @@ public class LionMove : MonoBehaviour
     float heading;
     Vector3 targetRotation;
 
-    private float radius = 35;
+    private float radius = 34;
 
     private Vector3 playerVelocity;
 
@@ -82,7 +82,7 @@ public class LionMove : MonoBehaviour
         }
         if (theLogic.attraction > 50)
         {
-            //FindMate();
+            FindMate();
         }
     }
 

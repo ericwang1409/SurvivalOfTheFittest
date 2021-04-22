@@ -20,6 +20,7 @@ public class ThirdPersonController : MonoBehaviour
     private float turnSmoothVelocity;
 
     private Vector3 playerVelocity;
+    private int radius = 34;
 
     private bool jumped = false;
 
@@ -46,21 +47,49 @@ public class ThirdPersonController : MonoBehaviour
     void Update()
     {
         ThirdPersonMovement();
-        FindGrass();
-        FindWater();
+        
         if (gameObject.CompareTag("lion"))
         {
             FindLionMate();
+            FindWater();
         }
         else if (gameObject.CompareTag("rabbit"))
         {
             FindMate();
+            FindGrass();
+        }
+        float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
+        if (distance > radius)
+        {
+            //Vector from object to center
+            Vector3 fromOriginToObject = transform.position - Vector3.zero;
+            //Multiply by radius/distance
+            fromOriginToObject *= radius / distance;
+
+            transform.position = Vector3.zero + fromOriginToObject;
+
         }
     }
 
     void FindRabbit()
     {
+        //if (Physics.CheckSphere(transform.position, sphereRadius))
+        Collider[] objectsCollided = Physics.OverlapSphere(transform.position, RabbitLogic.tsphereRadius);
+        foreach (var objectC in objectsCollided)
+        {
+            if (objectC.gameObject.tag == "rabbit" && thirdPersonLogicLion.hunger <= 50)
+            {
+                //transform.position = Vector3.MoveTowards(transform.position, objectC.gameObject.position, Time.deltaTime * GlobalVars.rabbitSpeed);
+                //WaitForSeconds(1);
+                Destroy(objectC.gameObject);
+                AddAnimals.worldRabbit--;
+                thirdPersonLogicLion.hunger += 50;
+                eating.Play();
+                //Debug.Log(RabbitLogic.hunger);
 
+            }
+        }
+        //Debug.Log("Hunger:" + hunger);
     }
 
     void FindGrass()
