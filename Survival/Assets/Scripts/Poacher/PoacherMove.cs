@@ -23,10 +23,12 @@ public class PoacherMove : MonoBehaviour
 
     private bool jumped;
 
-    public static int poacherSpeed = 20;
+    private int poacherSpeed = 10;
     private float closestLion = int.MaxValue;
     Vector3 lionPosition;
     GameObject lion;
+
+    bool hunting = false;
 
 
     // Start is called before the first frame update. Each rabbit has the script so it runs for each one
@@ -65,48 +67,62 @@ public class PoacherMove : MonoBehaviour
     void FindLion()
     {
         //if (Physics.CheckSphere(transform.position, sphereRadius))
-        Collider[] canSee = Physics.OverlapSphere(transform.position, 100);
-        foreach (var detected in canSee)
+
+        if (!hunting)
         {
-            if (detected.gameObject.tag == "lion")
+            Collider[] canSee = Physics.OverlapSphere(transform.position, 100);
+            foreach (var detected in canSee)
             {
-                if (Vector3.Distance(detected.transform.position, transform.position) < closestLion)
+                if (detected.gameObject.tag == "lion")
                 {
-                    closestLion = Vector3.Distance(lionPosition, transform.position);
-                    lion = detected.gameObject;
-                    lionPosition = detected.transform.position;
+                    if (Vector3.Distance(detected.transform.position, transform.position) < closestLion)
+                    {
+                        closestLion = Vector3.Distance(lionPosition, transform.position);
+                        lion = detected.gameObject;
+                        lionPosition = detected.transform.position;
+                    }
                 }
             }
+            hunting = true;
         }
 
-        transform.LookAt(lion.transform);
-        Vector3 goToLion = lionPosition - transform.position;
-        goToLion = goToLion.normalized;
-        //goToGrass = transform.TransformDirection(goToGrass);
-        controller.Move(goToLion * Time.deltaTime);
-        //Debug.Log(Time.deltaTime);
-        /*Debug.Log("Rabbit location: " + transform.position);
-        Debug.Log("Grass location: " + grassPosition);
-        Debug.Log("Moving vector: " + goToGrass);*/
-        //If contacted with the floor
-        Debug.Log(jumped);
-        if (controller.isGrounded && !jumped)
+        if (hunting && lion != null)
         {
-            playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
-            StartCoroutine(DelayJump());
-            jumped = true;
-            //Debug.Log(playerVelocity.y);
+            transform.LookAt(lion.transform);
+            Vector3 goToLion = lion.transform.position - transform.position;
+            goToLion = goToLion.normalized;
+            //goToGrass = transform.TransformDirection(goToGrass);
+            controller.Move(new Vector3(goToLion.x, -1, goToLion.z) * Time.deltaTime);
+            //Debug.Log(Time.deltaTime);
+            /*Debug.Log("Rabbit location: " + transform.position);
+            Debug.Log("Grass location: " + grassPosition);
+            Debug.Log("Moving vector: " + goToGrass);*/
+            //If contacted with the floor
+            //Debug.Log(jumped);
+            if (controller.isGrounded && !jumped)
+            {
+                playerVelocity.y += Mathf.Sqrt(.8f * -3f * -9.81f);
+                StartCoroutine(DelayJump());
+                jumped = true;
+                //Debug.Log(playerVelocity.y);
+            }
+            else if (!controller.isGrounded)
+            {
+                //playerVelocity.y += -9.81f * Time.deltaTime;
+                controller.Move(Vector3.down * 3 * Time.deltaTime);
+            }
+
+            //Does not update very frame
+            playerVelocity.y += -9.81f * Time.deltaTime;
+
+            controller.Move(playerVelocity * Time.deltaTime);
         }
-        else if (!controller.isGrounded)
+        else if (lion == null)
         {
-            //playerVelocity.y += -9.81f * Time.deltaTime;
-            controller.Move(Vector3.down * 3 * Time.deltaTime);
+            hunting = false;
+            closestLion = int.MaxValue;
         }
 
-        //Does not update very frame
-        playerVelocity.y += -9.81f * Time.deltaTime;
-
-        controller.Move(playerVelocity * Time.deltaTime);
 
         Collider[] objectsCollided = Physics.OverlapSphere(transform.position, 1);
         foreach (var objectC in objectsCollided)
@@ -116,6 +132,8 @@ public class PoacherMove : MonoBehaviour
                 Destroy(objectC.gameObject);
                 AddAnimals.worldLion--;
                 closestLion = int.MaxValue;
+                hunting = false;
+                //Debug.Log("stuck");
             }
         }
     }
@@ -125,7 +143,7 @@ public class PoacherMove : MonoBehaviour
         float distance = Vector3.Distance(transform.position, new Vector3(0, 0, 0));
 
         //Eurlerangles is the angle. Make the movements gradual 
-        transform.eulerAngles = Vector3.Slerp(transform.eulerAngles, targetRotation, Time.deltaTime * directionChangeInterval);
+        transform.eulerAngles = Vector3.Slerp(new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z), targetRotation, Time.deltaTime * directionChangeInterval);
         //vecto forward value is 0, 0, 1
         var forward = transform.TransformDirection(Vector3.forward);
         //Vector value 0, 1, 0
